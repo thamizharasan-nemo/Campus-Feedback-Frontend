@@ -1,0 +1,160 @@
+.analytics-section {
+  background: linear-gradient(180deg, #f8fafc, #ffffff);
+  padding: 3rem 1rem;
+}
+
+.analytics-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+.analytics-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.analytics-subtitle {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+/* Metrics */
+.analytics-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.metric-card {
+  background: white;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+.metric-card p {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.metric-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* Sections */
+.analytics-block {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+/* Card lists */
+.card-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.card-list.two-col {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Data cards */
+.data-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.data-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.data-card h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+/* Compact instructor card */
+.data-card.compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Pills */
+.rating-pill {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Rating distribution */
+.rating-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.rating-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.rating-card .stars {
+  color: #facc15;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.rating-card span {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+
+.data-card.clickable {
+  cursor: pointer;
+  position: relative;
+}
+
+.data-card.clickable::after {
+  content: "View details →";
+  position: absolute;
+  right: 1rem;
+  bottom: 0.8rem;
+  font-size: 0.75rem;
+  color: #2563eb;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.data-card.clickable:hover::after {
+  opacity: 1;
+}

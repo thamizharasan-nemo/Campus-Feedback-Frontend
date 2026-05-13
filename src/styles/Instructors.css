@@ -1,0 +1,350 @@
+/* Instructors.css */
+
+.instructors-page {
+  padding: 28px 20px 60px;
+  background: #f8f9fa;
+  min-height: calc(100vh - 70px);
+}
+
+/* Header */
+.instructors-page h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 4px;
+}
+
+.instructors-page .page-sub {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+/* Search bar */
+.instructor-search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  max-width: 420px;
+}
+
+.instructor-search-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  outline: none;
+}
+
+.instructor-search-bar input:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.instructor-search-bar .btn {
+  font-size: 14px;
+}
+
+/* Instructor grid */
+.instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Instructor card */
+.instructor-card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.instructor-card-body {
+  padding: 16px 16px 12px;
+}
+
+.instructor-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.instructor-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #cfe2ff;
+  color: #084298;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.instructor-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 1px;
+}
+
+.instructor-meta {
+  font-size: 12.5px;
+  color: #6c757d;
+}
+
+/* Stars */
+.star-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.stars {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #ffc107;
+}
+
+.star-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #343a40;
+}
+
+/* Performance badge */
+.perf-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.perf-badge.best    { background: #d1e7dd; color: #0f5132; }
+.perf-badge.good    { background: #cfe2ff; color: #084298; }
+.perf-badge.average { background: #fff3cd; color: #664d03; }
+.perf-badge.low     { background: #f8d7da; color: #842029; }
+
+/* Expand button */
+.instructor-expand-btn {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #f8f9fa;
+  border: none;
+  border-top: 1px solid #e9ecef;
+  color: #0d6efd;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s;
+}
+
+.instructor-expand-btn:hover {
+  background: #e8f0fe;
+}
+
+/* Feedback panel */
+.feedback-panel {
+  border-top: 1px solid #e9ecef;
+  background: #f8f9fa;
+  padding: 14px 16px;
+}
+
+.feedback-panel-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.feedback-item {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-size: 13.5px;
+}
+
+.feedback-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.feedback-stars {
+  font-size: 13px;
+  color: #ffc107;
+}
+
+.feedback-date {
+  font-size: 12px;
+  color: #adb5bd;
+}
+
+.feedback-comment {
+  color: #495057;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.feedback-anon {
+  font-size: 11.5px;
+  color: #adb5bd;
+  margin-top: 3px;
+}
+
+.feedback-empty {
+  font-size: 13.5px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 12px 0;
+}
+
+/* Feedback pagination */
+.feedback-pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.feedback-pages button {
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  background: #fff;
+  color: #495057;
+  cursor: pointer;
+}
+
+.feedback-pages button:hover:not(:disabled) {
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+.feedback-pages button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.feedback-pages .pg-info {
+  font-size: 12.5px;
+  color: #6c757d;
+}
+
+/* Assign panel (admin only) */
+.assign-panel {
+  border-top: 1px solid #e9ecef;
+  background: #fffbf0;
+  padding: 12px 16px 14px;
+}
+
+.assign-panel-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #856404;
+  margin-bottom: 8px;
+}
+
+.assigned-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.assigned-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #cfe2ff;
+  color: #084298;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.assigned-tag button {
+  background: none;
+  border: none;
+  color: #084298;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.assigned-tag button:hover {
+  opacity: 1;
+  color: #842029;
+}
+
+.assign-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.assign-row select {
+  flex: 1;
+  min-width: 150px;
+  padding: 7px 10px;
+  font-size: 13.5px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background: #fff;
+  color: #212529;
+  outline: none;
+}
+
+.assign-row select:focus {
+  border-color: #86b7fe;
+}
+
+.assign-row .btn {
+  font-size: 13.5px;
+  padding: 7px 14px;
+  white-space: nowrap;
+}
+
+.assign-msg {
+  font-size: 13px;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.instructors-state {
+  text-align: center;
+  padding: 48px 0;
+  color: #6c757d;
+  font-size: 14.5px;
+}
+
+@media (max-width: 600px) {
+  .instructors-page       { padding: 16px 12px 48px; }
+  .instructor-grid        { grid-template-columns: 1fr; }
+  .instructor-search-bar  { max-width: 100%; }
+}

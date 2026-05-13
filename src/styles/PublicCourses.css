@@ -1,0 +1,158 @@
+/* GLOBAL */
+.public-page {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #1f2937;
+  background: #f7f9fc;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #5b7cfa, #7f8cff);
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero p {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+.hero-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-primary {
+  background: white;
+  color: #4f63ff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 12px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+.section {
+  padding: 70px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.muted-bg {
+  background: #eef2ff;
+  border-radius: 24px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+/* HOW IT WORKS */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.step-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+}
+
+.step-icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.step-number {
+  font-weight: 700;
+  color: #5b7cfa;
+}
+
+/* COURSES */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.course-card {
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+.course-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+/* TOP COURSES */
+.top-course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.top-course-card {
+  background: linear-gradient(180deg, #ffffff, #f3f6ff);
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.08);
+}
+
+.stars {
+  font-size: 1.2rem;
+  margin: 8px 0;
+}
+
+.rating-text {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+/* FOOTER */
+.footer {
+  padding: 40px 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 0.9rem;
+}

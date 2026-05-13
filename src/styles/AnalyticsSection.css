@@ -1,0 +1,369 @@
+/* =========================
+   DESIGN TOKENS
+========================= */
+:root {
+  --radius: 18px;
+  --radius-lg: 22px;
+
+  --shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 30px 70px rgba(0, 0, 0, 0.14);
+
+  --blue-start: #3b82f6;
+  --blue-end: #0ea5e9;
+  --green-start: #22c55e;
+  --green-end: #16a34a;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+.public-dashboard {
+  background: #f8fafc;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero-section {
+  background: linear-gradient(135deg, var(--blue-start), var(--blue-end));
+  padding: 5rem 0;
+}
+
+.hero-desc {
+  max-width: 720px;
+  margin: 1rem auto 0;
+  opacity: 0.9;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.section-light {
+  padding: 4.5rem 0;
+}
+
+.analytics-section {
+  padding: 5rem 0;
+  background: linear-gradient(to bottom, #f8f9fb, #ffffff);
+}
+
+.how-section {
+  background: linear-gradient(135deg, var(--blue-start), var(--blue-end));
+  padding: 5rem 0;
+}
+
+/* =========================
+   BASE CARD
+========================= */
+.card-base {
+  background: #ffffff;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-base:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* =========================
+   FEATURE CARDS (MARKETING)
+========================= */
+
+.feature-card {
+  background: white;
+  border-radius: 22px;
+  padding: 2.8rem 2.4rem;
+  height: 100%;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.14);
+}
+
+/* Title */
+.feature-card h5 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #0f172a;
+}
+
+/* Text */
+.feature-card p {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.section-light h2 {
+  font-size: 2.1rem;
+  margin-bottom: 3rem;
+}
+
+
+/* =========================
+   METRIC CARDS
+========================= */
+.metric-card {
+  background: linear-gradient(135deg, #4789f3, var(--blue-end));
+  color: black;
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(15, 144, 231, 0.35);
+}
+
+.metric-icon {
+  font-size: 2.4rem;
+}
+
+.metric-value {
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+
+/* =========================
+   ANALYTICS CARD – BASE
+========================= */
+.analytics-card {
+  position: relative;
+  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Accent strip */
+.analytics-card .card-accent {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.analytics-card--course .card-accent {
+  background: linear-gradient(180deg, var(--blue-start), var(--blue-end));
+}
+
+.analytics-card--instructor .card-accent {
+  background: linear-gradient(180deg, var(--green-start), var(--green-end));
+}
+
+/* =========================
+   ANALYTICS – PREMIUM (SOFT BLUE)
+========================= */
+
+.analytics-card.premium {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(240, 247, 255, 0.92)
+  );
+  backdrop-filter: blur(14px);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+
+  border: 1px solid rgba(59, 130, 246, 0.18);
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(55, 143, 245, 0.7);
+
+  color: #0f172a;
+}
+
+.analytics-card.premium:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 30px 65px rgba(56, 113, 244, 0.16),
+    inset 0 2px 0 rgba(32, 180, 254, 0.8);
+}
+
+
+/* Glow accent */
+.premium-accent {
+  position: absolute;
+  top: -45%;
+  right: -45%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+/* Course glow – blue but subtle */
+.analytics-card--course .premium-accent {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.45),
+    transparent 65%
+  );
+}
+
+/* Instructor glow – green hint only */
+.analytics-card--instructor .premium-accent {
+  background: radial-gradient(
+    circle,
+    rgba(34, 197, 94, 0.35),
+    transparent 65%
+  );
+}
+
+
+.analytics-card.premium .rating,
+.analytics-card.premium .card-header h6,
+.analytics-card.premium .feedback-pill {
+  color: #0f172a;
+}
+
+.analytics-card.premium .feedback-pill {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+/* =========================
+   CARD CONTENT
+========================= */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 1.2rem;
+}
+
+.card-header h6 {
+  font-size: 1.05rem;
+  color: white;
+  line-height: 1.4;
+  max-width: 85%;
+}
+
+.rank-chip {
+  background: rgba(15, 23, 42, 0.06);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.feedback-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  color: white;
+}
+
+/* =========================
+   HOW SECTION
+========================= */
+.how-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.how-icon {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   ANALYTICS BLOCK
+========================= */
+.analytics-block {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  h1.display-5 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .metric-value {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .analytics-card,
+  .analytics-card.premium {
+    padding: 1.6rem;
+  }
+
+  .card-header h6 {
+    font-size: 0.95rem;
+  }
+
+  .feature-card {
+    padding: 2rem 1.8rem;
+  }
+
+  .feature-card h5 {
+    font-size: 1.1rem;
+  }
+
+  .rating {
+    font-size: 1.05rem;
+  }
+
+  .progress {
+    height: 8px;
+  }
+}

@@ -1,0 +1,175 @@
+.register-page {
+  min-height: calc(100vh - 70px);
+  background: #f8f9fa;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 60px;
+}
+
+.register-card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.register-card-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.register-card-header .brand {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0d6efd;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.register-card-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #212529;
+  margin: 0;
+}
+
+.register-card-header p {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.register-form .form-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 5px;
+}
+
+.register-form .form-control,
+.register-form .form-select {
+  font-size: 14px;
+  padding: 10px 12px;
+  border-color: #ced4da;
+  border-radius: 6px;
+}
+
+.register-form .form-control:focus,
+.register-form .form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.12);
+}
+
+.register-form .form-text {
+  font-size: 12px;
+  color: #adb5bd;
+  margin-top: 4px;
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .form-control {
+  padding-right: 44px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  font-size: 15px;
+}
+
+.toggle-password:hover {
+  color: #0d6efd;
+}
+
+.section-divider {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #adb5bd;
+  margin: 20px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e9ecef;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.register-footer {
+  text-align: center;
+  font-size: 13.5px;
+  color: #6c757d;
+  margin-top: 20px;
+}
+
+.register-footer a {
+  color: #0d6efd;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}
+
+.error-alert,
+.success-alert {
+  font-size: 13.5px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+
+/* Role badge colors */
+.role-hint {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.role-hint span {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: #e9ecef;
+  color: #495057;
+}
+
+@media (max-width: 480px) {
+  .register-card {
+    padding: 28px 20px;
+  }
+}

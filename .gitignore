@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# Production
+build/
+dist/
+
+# Environment variables
+.env
+
+# Misc
+.DS_Store  
+
+# Logs
+logs    
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

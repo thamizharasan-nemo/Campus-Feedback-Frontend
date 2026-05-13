@@ -1,0 +1,163 @@
+/* ── Shared auth page styles (Login.css & Register.css both import this) ──
+   Scope: .auth-page, .auth-card, and helper classes used across both pages */
+
+.auth-page {
+  min-height: calc(100vh - 70px);
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px 60px;
+}
+
+/* Card */
+.auth-card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+}
+
+/* Header */
+.auth-card-header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.auth-brand {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0d6efd;
+  margin-bottom: 8px;
+}
+
+.auth-card-header h2 {
+  font-size: 21px;
+  font-weight: 700;
+  color: #212529;
+  margin: 0 0 5px;
+}
+
+.auth-card-header p {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* Alert */
+.auth-alert {
+  font-size: 13.5px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+/* Form labels + inputs */
+.auth-form .form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 5px;
+}
+
+.auth-form .form-control,
+.auth-form .form-select {
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border-color: #ced4da;
+  color: #212529;
+}
+
+.auth-form .form-control:focus,
+.auth-form .form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.13);
+}
+
+.auth-form .form-text {
+  font-size: 12px;
+  color: #adb5bd;
+  margin-top: 4px;
+}
+
+/* Password toggle */
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .form-control {
+  padding-right: 44px;
+}
+
+.toggle-pwd {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.toggle-pwd:hover { color: #0d6efd; }
+
+/* Section divider inside form */
+.field-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #adb5bd;
+  margin: 6px 0 16px;
+}
+
+.field-divider::before,
+.field-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e9ecef;
+}
+
+/* Submit button */
+.auth-btn {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* Footer link row */
+.auth-footer {
+  text-align: center;
+  font-size: 13.5px;
+  color: #6c757d;
+  margin-top: 20px;
+}
+
+.auth-footer a {
+  color: #0d6efd;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-footer a:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .auth-card { padding: 28px 20px; }
+}

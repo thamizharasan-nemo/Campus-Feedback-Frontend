@@ -1,0 +1,10 @@
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-link.active {
+  font-weight: 600;
+  color: #0d6efd !important;
+}
