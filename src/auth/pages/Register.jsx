@@ -15,19 +15,22 @@ const INITIAL_FORM = {
 function Register() {
   const navigate = useNavigate();
 
-  const [formData, setFormData]         = useState(INITIAL_FORM);
+  const [formData, setFormData] = useState(INITIAL_FORM);
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError]               = useState("");
-  const [success, setSuccess]           = useState("");
-  const [loading, setLoading]           = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ 
+      ...prev, 
+      [e.target.name]: e.target.value 
+    }));
     setError("");
     setSuccess("");
   };
 
-  // Mirrors the constraints in UserRequestDTO exactly
+  
   const validate = () => {
     const { username, identityNo, email, password, institutionId } = formData;
 
@@ -37,7 +40,7 @@ function Register() {
     if (username.trim().length < 3 || username.trim().length > 50) {
       return "Full name must be 3–50 characters.";
     }
-    // Exact pattern from UserRequestDTO @Pattern
+    
     if (!/^(([123]\d[A-Za-z]{2}\d{2,3})|([0-9]{4}admin[0-9]{2,3}))$/.test(identityNo.trim())) {
       return "Identity No is invalid. Students: e.g. 21CS001  ·  Admins: e.g. 2023admin01";
     }
@@ -61,7 +64,7 @@ function Register() {
     setLoading(true);
     try {
       const { username, identityNo, role, email, password, institutionId } = formData;
-      // authService.register signature: (username, identityNo, role, email, password, institutionId)
+      
       await register(
         username.trim(),
         identityNo.trim(),
@@ -71,9 +74,10 @@ function Register() {
         Number(institutionId)
       );
       setSuccess("Account created! Redirecting to login…");
-      setTimeout(() => navigate("/login"), 1800);
-    } catch (err) {
-      // api.js interceptor rejects with message string on !success responses
+      setTimeout(() => navigate("/login"), 2000);
+    } 
+    
+    catch (err) {
       setError(
         typeof err === "string"
           ? err
@@ -88,20 +92,17 @@ function Register() {
     <div className="auth-page">
       <div className="auth-card">
 
-        {/* Header */}
         <div className="auth-card-header">
           <span className="auth-brand">Campus Feedbacks</span>
           <h2>Create your account</h2>
           <p>Register under your institution to get started</p>
         </div>
 
-        {/* Alerts */}
-        {error   && <div className="alert alert-danger  auth-alert">{error}</div>}
+        {error && <div className="alert alert-danger  auth-alert">{error}</div>}
         {success && <div className="alert alert-success auth-alert">{success}</div>}
 
         <form className="auth-form" onSubmit={handleSubmit} noValidate>
 
-          {/* Institution ID — first because it's the "tenant" key */}
           <div className="mb-3">
             <label className="form-label" htmlFor="institutionId">Institution ID</label>
             <input
@@ -114,7 +115,6 @@ function Register() {
 
           <div className="field-divider">Personal Info</div>
 
-          {/* Full name */}
           <div className="mb-3">
             <label className="form-label" htmlFor="username">Full name</label>
             <input
@@ -125,7 +125,6 @@ function Register() {
             />
           </div>
 
-          {/* Identity No */}
           <div className="mb-3">
             <label className="form-label" htmlFor="identityNo">Identity No</label>
             <input
@@ -134,7 +133,7 @@ function Register() {
               value={formData.identityNo} onChange={handleChange}
             />
             <div className="form-text">
-              Students: roll no (21CS001) &nbsp;·&nbsp; Admins: 2023admin01
+              Students: roll no (21CS001) &nbsp;·&nbsp; Admins: 2026admin01
             </div>
           </div>
 
@@ -162,7 +161,7 @@ function Register() {
               />
               <button
                 type="button" className="toggle-pwd"
-                onClick={() => setShowPassword((v) => !v)}
+                onClick={() => setShowPassword((show) => !show)}
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? "🙈" : "👁️"}
@@ -170,7 +169,6 @@ function Register() {
             </div>
           </div>
 
-          {/* Role — TEACHER added to match User.Role enum */}
           <div className="mb-4">
             <label className="form-label" htmlFor="role">Role</label>
             <select id="role" name="role" className="form-select" value={formData.role} onChange={handleChange}>

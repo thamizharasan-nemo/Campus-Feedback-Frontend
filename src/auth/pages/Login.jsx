@@ -1,23 +1,33 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../services/AuthService"; // adjust path if needed
+import { login } from "../../services/AuthService"; 
 import "../../styles/Auth.css"
 
 function Login({ setIsAuthenticated }) {
+
   const navigate = useNavigate();
 
-  const [formData, setFormData]         = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState(
+    { 
+      email: "", 
+      password: "" 
+    }
+  );
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError]               = useState("");
-  const [loading, setLoading]           = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({
+      ...prev, 
+      [e.target.name]: e.target.value 
+    }));
     setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!formData.email.trim() || !formData.password) {
       setError("Please fill in all fields.");
       return;
@@ -25,8 +35,6 @@ function Login({ setIsAuthenticated }) {
 
     setLoading(true);
     try {
-      // api.js interceptor returns apiResponse.data directly on success
-      // authService.login returns the axios promise, so data = { accessToken, refreshToken }
       const data = await login(formData.email.trim(), formData.password);
 
       localStorage.setItem("token", data.accessToken);
@@ -49,7 +57,6 @@ function Login({ setIsAuthenticated }) {
     <div className="auth-page">
       <div className="auth-card">
 
-        {/* Header */}
         <div className="auth-card-header">
           <span className="auth-brand">Campus Feedbacks</span>
           <h2>Welcome back</h2>
@@ -82,7 +89,7 @@ function Login({ setIsAuthenticated }) {
               />
               <button
                 type="button" className="toggle-pwd"
-                onClick={() => setShowPassword((v) => !v)}
+                onClick={() => setShowPassword((show) => !show)}
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? "🙈" : "👁️"}
