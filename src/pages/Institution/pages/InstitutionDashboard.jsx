@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AnalyticsDashboard from "../Analytics/AnalyticsDashboard"; // adjust path
+import AnalyticsDashboard from "../../Analytics/AnalyticsDashboard"; 
 
 import {
   getAvgCourseRatingLast7Days,
@@ -7,7 +7,7 @@ import {
   getTopCourses,
   getTopInstructors,
   getFeedbackRatings,
-} from "../../services/AnalyticsService"; // adjust path
+} from "../../../services/AnalyticsService"; 
 
 import {
   getInstitutionDashboard,
@@ -15,11 +15,10 @@ import {
   getTotalCourses,
   getTotalInstructors,
   getTotalFeedbacks,
-} from "../../services/InstitutionService"; // adjust path
+} from "../../../services/InstitutionService"; 
 
-import "../../styles/InstitutionDashboard.css";
+import "../../../styles/institution/InstitutionDashboard.css";
 
-// ── Sub-components ────────────────────────────────────────────────────────────
 
 const InfoCard = ({ label, value }) => (
   <div className="inst-info-card">
@@ -29,10 +28,10 @@ const InfoCard = ({ label, value }) => (
 );
 
 const STATS = [
-  { key: "courses",     label: "Total Courses",     icon: "📚" },
+  { key: "courses",clabel: "Total Courses", icon: "📚" },
   { key: "instructors", label: "Total Instructors",  icon: "👨‍🏫" },
-  { key: "students",    label: "Total Students",     icon: "👨‍🎓" },
-  { key: "feedbacks",   label: "Total Feedbacks",    icon: "💬" },
+  { key: "students", label: "Total Students", icon: "👨‍🎓" },
+  { key: "feedbacks", label: "Total Feedbacks", icon: "💬" },
 ];
 
 const StatCard = ({ icon, label, value }) => (
@@ -45,34 +44,31 @@ const StatCard = ({ icon, label, value }) => (
   </div>
 );
 
-// ── Main component ────────────────────────────────────────────────────────────
 
 function InstitutionDashboard() {
-  const [institution, setInstitution]           = useState(null);
-  const [counts, setCounts]                     = useState({ courses: 0, instructors: 0, students: 0, feedbacks: 0 });
+  const [institution, setInstitution] = useState(null);
+  const [counts, setCounts] = useState({ courses: 0, instructors: 0, students: 0, feedbacks: 0 });
 
-  const [avgCourseRating, setAvgCourseRating]       = useState(null);
+  const [avgCourseRating, setAvgCourseRating] = useState(null);
   const [avgInstructorRating, setAvgInstructorRating] = useState(null);
-  const [topCourses, setTopCourses]               = useState([]);
-  const [topInstructors, setTopInstructors]       = useState([]);
-  const [feedbackRatings, setFeedbackRatings]     = useState([]);
+  const [topCourses, setTopCourses] = useState([]);
+  const [topInstructors, setTopInstructors] = useState([]);
+  const [feedbackRatings, setFeedbackRatings] = useState([]);
 
   useEffect(() => {
-    // Institution info
     getInstitutionDashboard().then(setInstitution).catch(() => {});
 
-    // Counts — run in parallel, each independent
     Promise.allSettled([
       getTotalCourses(),
       getTotalInstructors(),
       getTotalStudents(),
       getTotalFeedbacks(),
-    ]).then(([c, i, s, f]) => {
+    ]).then(([course, instructor, student, feedback]) => {
       setCounts({
-        courses:     c.status === "fulfilled" ? c.value : 0,
-        instructors: i.status === "fulfilled" ? i.value : 0,
-        students:    s.status === "fulfilled" ? s.value : 0,
-        feedbacks:   f.status === "fulfilled" ? f.value : 0,
+        courses: course.status === "fulfilled" ? course.value : 0,
+        instructors: instructor.status === "fulfilled" ? instructor.value : 0,
+        students: student.status === "fulfilled" ? student.value : 0,
+        feedbacks: feedback.status === "fulfilled" ? feedback.value : 0,
       });
     });
 
@@ -87,7 +83,6 @@ function InstitutionDashboard() {
   return (
     <div className="inst-dashboard">
 
-      {/* Header */}
       <div className="inst-dash-header">
         <div>
           <h2>{institution?.institutionName || "Institution Dashboard"}</h2>
@@ -98,11 +93,10 @@ function InstitutionDashboard() {
         )}
       </div>
 
-      {/* Institution info row */}
       <div className="inst-info-grid">
         <InfoCard label="Institution Code" value={institution?.institutionCode} />
-        <InfoCard label="Email"            value={institution?.email} />
-        <InfoCard label="Address"          value={institution?.address} />
+        <InfoCard label="Email" value={institution?.email} />
+        <InfoCard label="Address" value={institution?.address} />
         <InfoCard
           label="Created At"
           value={institution?.createdAt
@@ -111,14 +105,12 @@ function InstitutionDashboard() {
         />
       </div>
 
-      {/* Stat cards */}
       <div className="inst-stats-grid">
         {STATS.map((s) => (
           <StatCard key={s.key} icon={s.icon} label={s.label} value={counts[s.key]} />
         ))}
       </div>
 
-      {/* Analytics */}
       <p className="inst-section-label">Analytics Overview</p>
       <div className="inst-analytics-wrap">
         <AnalyticsDashboard

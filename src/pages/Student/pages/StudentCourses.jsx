@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { searchCourses } from "../../services/CourseService";
-import CourseSearchBar from "../../components/course/CourseSearchBar";
-import "../../styles/course/StudentCourses.css";
+import { searchCourses } from "../../../services/CourseService";
+import CourseSearchBar from "../../../components/course/CourseSearchBar";
+import "../../../styles/course/StudentCourses.css";
 
 function StudentCourses() {
   const [courses, setCourses] = useState([]);
@@ -51,7 +51,6 @@ function StudentCourses() {
 
   return (
     <div className="container courses-page">
-      {/* Header */}
       <div className="courses-header">
         <div>
           <h2 className="courses-title">Available Courses</h2>
@@ -63,7 +62,6 @@ function StudentCourses() {
         <CourseSearchBar onSearch={(value) => setKeyword(value)} />
       </div>
 
-      {/* Sort Controls */}
       <div className="courses-sort">
         <button onClick={() => handleSort("courseName")}>
           Sort by Name
@@ -73,7 +71,6 @@ function StudentCourses() {
         </button>
       </div>
 
-      {/* Courses Grid */}
       <div className="row g-4">
         {courses.map((course) => (
           <div key={course.courseId} className="col-md-6 col-lg-4">

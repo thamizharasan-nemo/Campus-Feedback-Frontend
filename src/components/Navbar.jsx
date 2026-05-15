@@ -1,11 +1,11 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getUserFromToken } from "../utils/auth";
-import "../styles/Navbar.css";
+import "../styles/navbar/Navbar.css";
 
 function Navbar({ isAuthenticated, onLogout }) {
-  const user     = getUserFromToken();
+  const user = getUserFromToken();
   const navigate = useNavigate();
-  const isAdmin   = user?.roles?.includes("ADMIN") === true;
+  const isAdmin = user?.roles?.includes("ADMIN") === true;
   const isStudent = user?.roles?.includes("STUDENT") === true;
 
   console.log("User role in Navbar:", user);
@@ -37,7 +37,6 @@ function Navbar({ isAuthenticated, onLogout }) {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ms-auto align-items-center">
 
-          {/* ── Public (unauthenticated) ── */}
           {!isAuthenticated && (
             <>
               <li className="nav-item">
@@ -69,7 +68,7 @@ function Navbar({ isAuthenticated, onLogout }) {
             </>
           )}
 
-          {/* ── Student links ── */}
+          {/* Student links */}
           {isAuthenticated && isStudent && (
             <>
               <li className="nav-item">
@@ -87,7 +86,7 @@ function Navbar({ isAuthenticated, onLogout }) {
             </>
           )}
 
-          {/* ── Auth buttons ── */}
+          {/* Auth buttons */}
           <li className="nav-item ms-2">
             {!isAuthenticated ? (
               <div className="d-flex gap-2">

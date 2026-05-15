@@ -1,4 +1,3 @@
-/* CourseTable.jsx */
 
 function CourseTable({ courses, sortBy, sortDir, onSort }) {
   const arrow = (col) => {
@@ -50,7 +49,7 @@ function CourseTable({ courses, sortBy, sortDir, onSort }) {
                     ? course.courseDescription.length > 50
                       ? course.courseDescription.slice(0, 50) + "…"
                       : course.courseDescription
-                    : "—"}
+                    : "No details"}
                 </td>
 
                 <td>

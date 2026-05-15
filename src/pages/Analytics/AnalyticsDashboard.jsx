@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/AnalyticsDashboard.css";
+import "../../styles/analytics/AnalyticsDashboard.css";
 
 function AnalyticsDashboard({
   avgCourseRating,
@@ -25,7 +25,6 @@ function AnalyticsDashboard({
           <p className="analytics-subtitle">{subtitle}</p>
         </header>
 
-        {/* Metric Cards */}
         <div className="analytics-metrics">
           <MetricCard
             title="Avg Course Rating (7 Days)"
@@ -37,7 +36,6 @@ function AnalyticsDashboard({
           />
         </div>
 
-        {/* Top Courses */}
         <Section title="Top Courses">
           <div className="card-list">
             {(topCourses || []).map((c) => (
@@ -56,7 +54,6 @@ function AnalyticsDashboard({
           </div>
         </Section>
 
-        {/* Top Instructors */}
         <Section title="Top Instructors">
           <div className="card-list two-col">
             {(topInstructors || []).map((i) => (
@@ -70,7 +67,6 @@ function AnalyticsDashboard({
           </div>
         </Section>
 
-        {/* Feedback Distribution */}
         <Section title="Feedback Rating Distribution">
           <div className="rating-grid">
             {(feedbackRatings || []).map((r, idx) => (
@@ -87,8 +83,7 @@ function AnalyticsDashboard({
 }
 
 
-/* Reusable components */
-
+// components
 const MetricCard = ({ title, value }) => (
   <div className="metric-card">
     <p>{title}</p>

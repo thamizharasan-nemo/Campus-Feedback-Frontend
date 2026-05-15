@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, ListGroup, Spinner } from "react-bootstrap";
-import { getStudentEnrollments } from "../../services/EnrollmentService";
+import { getStudentEnrollments } from "../../../services/EnrollmentService";
 
 const EnrolledCourses = () => {
   const [enrollments, setEnrollments] = useState([]);

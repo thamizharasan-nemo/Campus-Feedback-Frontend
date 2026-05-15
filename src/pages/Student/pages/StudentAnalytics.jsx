@@ -3,11 +3,11 @@ import { Row, Col, Card, ListGroup, Spinner } from "react-bootstrap";
 import {
   getAvgCourseRatingLast7Days,
   getTopCourses,
-} from "../../services/AnalyticsService";
+} from "../../../services/AnalyticsService";
 import {
   getTotalCourses,
   getTotalInstructors,
-} from "../../services/InstitutionService";
+} from "../../../services/InstitutionService";
 
 const StudentAnalytics = () => {
   const [avgRating, setAvgRating] = useState(null);

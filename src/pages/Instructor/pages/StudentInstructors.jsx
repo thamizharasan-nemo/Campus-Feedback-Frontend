@@ -4,7 +4,7 @@ import {
   searchInstructors,
 } from "../../../services/InstructorService";
 import InstructorCard from "../components/InstructorCard";
-import "../../../styles/Instructors.css";
+import "../../../styles/instructors/Instructors.css";
 
 function StudentInstructors() {
   const [instructors, setInstructors] = useState([]);
@@ -51,7 +51,6 @@ function StudentInstructors() {
       <h3 className="fw-bold">Instructors</h3>
       <p className="page-sub">Browse instructors in your institution and view student feedback.</p>
 
-      {/* Search */}
       <form className="instructor-search-bar" onSubmit={handleSearch}>
         <input
           type="text"
@@ -71,7 +70,6 @@ function StudentInstructors() {
         )}
       </form>
 
-      {/* States */}
       {loading && <div className="instructors-state">Loading instructors…</div>}
 
       {error && (
@@ -86,7 +84,6 @@ function StudentInstructors() {
         </div>
       )}
 
-      {/* Grid */}
       {!loading && !error && instructors.length > 0 && (
         <div className="instructor-grid">
           {instructors.map((instructor) => (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getInstitutionDashboard, updateInstitution } from "../../services/InstitutionService";
+import { getInstitutionDashboard, updateInstitution } from "../../../services/InstitutionService";
 
 function InstitutionManagement() {
   const [institution, setInstitution] = useState({

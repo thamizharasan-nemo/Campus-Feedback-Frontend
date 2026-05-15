@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, ProgressBar } from "react-bootstrap";
-import "../../styles/AnalyticsSection.css";
+import "../../styles/analytics/AnalyticsSection.css";
 
 function PublicDashboard() {
   const avgCourseRating = 4.2;

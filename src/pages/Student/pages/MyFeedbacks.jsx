@@ -3,7 +3,7 @@ import { Card, Button, Spinner, Pagination } from "react-bootstrap";
 import {
   getMyFeedbacks,
   deleteFeedback,
-} from "../../services/FeedbackService";
+} from "../../../services/FeedbackService";
 
 const MyFeedbacks = () => {
   const [feedbacks, setFeedbacks] = useState([]);

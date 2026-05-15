@@ -7,8 +7,6 @@ import {
 import { getAllUnassignedCoursesByInstitution } from "../../../services/CourseService";
 import { getUserFromToken } from "../../../utils/auth";
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
 function getInitials(name = "") {
   return name
     .split(" ")
@@ -24,20 +22,41 @@ function renderStars(rating) {
 }
 
 function getPerfBadge(rating) {
-  if (rating == null || rating === 0) return { label: "No Data",          cls: "average" };
-  if (rating >= 4.5)                  return { label: "⭐ Best Performer", cls: "best"    };
-  if (rating >= 3.5)                  return { label: "👍 Good",           cls: "good"    };
-  if (rating >= 2.5)                  return { label: "📊 Average",        cls: "average" };
-  return                                     { label: "⚠ Needs Work",      cls: "low"     };
+  if (rating == null || rating === 0) {
+    return {
+      label: "No Data",
+      cls: "average",
+    };
+  }
+  if (rating >= 4.5) {
+    return {
+      label: "⭐ Best Performer",
+      cls: "best",
+    };
+  }
+  if (rating >= 3.5) {
+    return {
+      label: "👍 Good",
+      cls: "good",
+    };
+  }
+  if (rating >= 2.5) {
+    return {
+      label: "📊 Average",
+      cls: "average",
+    };
+  }
+  return {
+    label: "⚠ Needs Work",
+    cls: "low",
+  };
 }
 
-// ── FeedbackPanel ─────────────────────────────────────────────────────────────
-
 function FeedbackPanel({ instructorId }) {
-  const [feedbacks, setFeedbacks]   = useState([]);
-  const [page, setPage]             = useState(0);
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [loading, setLoading]       = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const PAGE_SIZE = 4;
 
@@ -59,7 +78,9 @@ function FeedbackPanel({ instructorId }) {
       .catch(() => setFeedbacks([]))
       .finally(() => !cancelled && setLoading(false));
 
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [instructorId, page]);
 
   return (
@@ -72,30 +93,40 @@ function FeedbackPanel({ instructorId }) {
         <p className="feedback-empty">No feedback yet.</p>
       )}
 
-      {!loading && feedbacks.map((feedback, i) => (
-        <div key={feedback.feedbackId ?? i} className="feedback-item">
-          <div className="feedback-item-top">
-            <span className="feedback-stars">
-              {renderStars(feedback.instructorRating ?? 0)}
-            </span>
-            <span className="feedback-date">
-              {feedback.submittedAt ? new Date(feedback.submittedAt).toLocaleDateString() : ""}
-            </span>
+      {!loading &&
+        feedbacks.map((feedback, i) => (
+          <div key={feedback.feedbackId ?? i} className="feedback-item">
+            <div className="feedback-item-top">
+              <span className="feedback-stars">
+                {renderStars(feedback.instructorRating ?? 0)}
+              </span>
+              <span className="feedback-date">
+                {feedback.submittedAt
+                  ? new Date(feedback.submittedAt).toLocaleDateString()
+                  : ""}
+              </span>
+            </div>
+            {feedback.instructorComment && (
+              <p className="feedback-comment">{feedback.instructorComment}</p>
+            )}
+            {feedback.anonymous && (
+              <div className="feedback-anon">Anonymous</div>
+            )}
           </div>
-          {feedback.instructorComment && (
-            <p className="feedback-comment">{feedback.instructorComment}</p>
-          )}
-          {feedback.anonymous && <div className="feedback-anon">Anonymous</div>}
-        </div>
-      ))}
+        ))}
 
       {totalPages > 1 && (
         <div className="feedback-pages">
           <button onClick={() => setPage((p) => p - 1)} disabled={page === 0}>
             Prev
           </button>
-          <span className="pg-info">{page + 1} / {totalPages}</span>
-          <button onClick={() => setPage((p) => p + 1)} disabled={page >= totalPages - 1}>
+          <span className="pg-info">
+            {page + 1} / {totalPages}
+          </span>
+          <button
+            onClick={() => setPage((p) => p + 1)}
+            disabled={page >= totalPages - 1}
+          >
             Next
           </button>
         </div>
@@ -104,16 +135,17 @@ function FeedbackPanel({ instructorId }) {
   );
 }
 
-// ── AssignPanel — rendered ONLY for admins ────────────────────────────────────
 
 function AssignPanel({ instructor }) {
   const { instructorId } = instructor;
 
-  const [assignedCourses, setAssignedCourses]     = useState(instructor.assignedCourses ?? []);
+  const [assignedCourses, setAssignedCourses] = useState(
+    instructor.assignedCourses ?? [],
+  );
   const [unassignedCourses, setUnassignedCourses] = useState([]);
-  const [selectedCourseId, setSelectedCourseId]   = useState("");
-  const [msg, setMsg]                             = useState(null);
-  const [busy, setBusy]                           = useState(false);
+  const [selectedCourseId, setSelectedCourseId] = useState("");
+  const [msg, setMsg] = useState(null);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     getAllUnassignedCoursesByInstitution()
@@ -131,10 +163,14 @@ function AssignPanel({ instructor }) {
     setBusy(true);
     try {
       await assignCourseToInstructor(instructorId, Number(selectedCourseId));
-      const course = unassignedCourses.find((c) => c.courseId === Number(selectedCourseId));
+      const course = unassignedCourses.find(
+        (c) => c.courseId === Number(selectedCourseId),
+      );
       if (course) {
         setAssignedCourses((prev) => [...prev, course]);
-        setUnassignedCourses((prev) => prev.filter((c) => c.courseId !== Number(selectedCourseId)));
+        setUnassignedCourses((prev) =>
+          prev.filter((c) => c.courseId !== Number(selectedCourseId)),
+        );
       }
       setSelectedCourseId("");
       flash("Course assigned successfully.");
@@ -148,8 +184,10 @@ function AssignPanel({ instructor }) {
   const handleUnassign = async (courseName) => {
     setBusy(true);
     try {
-      const courseObj = assignedCourses.find((c) => c.courseName === courseName);
-      const courseId  = courseObj?.courseId;
+      const courseObj = assignedCourses.find(
+        (c) => c.courseName === courseName,
+      );
+      const courseId = courseObj?.courseId;
 
       if (!courseId) {
         flash("Could not find course ID to unassign.", "danger");
@@ -171,10 +209,8 @@ function AssignPanel({ instructor }) {
     <div className="assign-panel">
       <div className="assign-panel-title">Manage Courses</div>
 
-      {/* Assigned courses — always show ✕ since this panel is admin-only */}
       {assignedCourses.length > 0 && (
         <div className="assigned-tags">
-
           {assignedCourses.map((course, i) => (
             <span key={course.courseId || i} className="assigned-tag">
               {course.courseName}
@@ -190,7 +226,6 @@ function AssignPanel({ instructor }) {
         </div>
       )}
 
-      {/* Unassigned course dropdown */}
       {unassignedCourses.length > 0 && (
         <div className="assign-row">
           <select
@@ -221,7 +256,14 @@ function AssignPanel({ instructor }) {
       )}
 
       {unassignedCourses.length === 0 && assignedCourses.length > 0 && (
-        <p style={{ fontSize: 12.5, color: "#6c757d", marginTop: 8, marginBottom: 0 }}>
+        <p
+          style={{
+            fontSize: 12.5,
+            color: "#6c757d",
+            marginTop: 8,
+            marginBottom: 0,
+          }}
+        >
           All available courses are already assigned.
         </p>
       )}
@@ -233,14 +275,12 @@ function AssignPanel({ instructor }) {
   );
 }
 
-// ── InstructorCard ────────────────────────────────────────────────────────────
 
-function InstructorCard({ instructor, isAdmin = false}) {
+function InstructorCard({ instructor, isAdmin = false }) {
   const [open, setOpen] = useState(false);
 
   const { instructorId, instructorName, avgRating, feedbackCount } = instructor;
   const badge = getPerfBadge(avgRating);
-
   const user = getUserFromToken();
 
   user?.role === "ADMIN" && console.log("Current user is admin.");
@@ -249,12 +289,13 @@ function InstructorCard({ instructor, isAdmin = false}) {
   return (
     <div className="instructor-card">
       <div className="instructor-card-body">
-
         <div className="instructor-card-top">
           <div className="instructor-avatar">{getInitials(instructorName)}</div>
           <div>
             <div className="instructor-name">{instructorName}</div>
-            <div className="instructor-meta">{feedbackCount ?? 0} feedbacks</div>
+            <div className="instructor-meta">
+              {feedbackCount ?? 0} feedbacks
+            </div>
           </div>
         </div>
 
@@ -266,7 +307,6 @@ function InstructorCard({ instructor, isAdmin = false}) {
         </div>
 
         <span className={`perf-badge ${badge.cls}`}>{badge.label}</span>
-
       </div>
 
       <button
@@ -276,12 +316,10 @@ function InstructorCard({ instructor, isAdmin = false}) {
         {open ? "▲ Hide Feedback" : "▼ View Feedback"}
       </button>
 
-      {/* Feedback — shown for everyone */}
       {open && <FeedbackPanel instructorId={instructorId} />}
 
-      {/* Assign panel — shown ONLY for admins */}
 
-    {console.log("IS ADMIN: ", isAdmin)}
+      {console.log("IS ADMIN: ", isAdmin)}
 
       {open && isAdmin && <AssignPanel instructor={instructor} />}
     </div>

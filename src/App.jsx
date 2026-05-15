@@ -8,19 +8,20 @@ import PublicCourses from "./pages/public/PublicCourses";
 import PublicInstructors from "./pages/public/PublicInstructors";
 import Login from "./auth/pages/Login";
 import Register from "./auth/pages/Register";
-import InstitutionLogin from "./pages/InstitutionLogin";
+import InstitutionLogin from "./pages/Institution/pages/InstitutionLogin";
 
-import { InstitutionLayout } from "./pages/InstitutionLayout";
+import { InstitutionLayout } from "./pages/Institution/Components/InstitutionLayout";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminRoute from "./routes/AdminRoute";
 import DashboardRouter from "./routes/DashboardRouter";
 
-import InstitutionDashboard from "./pages/Institution/InstitutionDashboard";
-import InstitutionCourses from "./pages/Institution/InstitutionCourses";
-import InstitutionManagement from "./pages/Institution/InstitutionManagement";
-import StudentDashboard from "./pages/Student/StudentDashboard";
-import StudentCourses from "./pages/Student/StudentCourses";
-import FeedbackForm from "./pages/Student/FeedbackForm";
+import InstitutionDashboard from "./pages/Institution/pages/InstitutionDashboard";
+import InstitutionCourses from "./pages/Institution/pages/InstitutionCourses";
+import InstitutionManagement from "./pages/Institution/pages/InstitutionManagement";
+
+import StudentDashboard from "./pages/Student/pages/StudentDashboard";
+import StudentCourses from "./pages/Student/pages/StudentCourses";
+import FeedbackForm from "./pages/Student/pages/FeedbackForm";
 import CourseDetailsPage from "./components/course/CourseDetailsPage";
 import { logout as authLogout } from "./utils/auth";
 import AdminInstructors from "./pages/Instructor/pages/AdminInstructors";

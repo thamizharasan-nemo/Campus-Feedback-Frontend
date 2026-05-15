@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getStudentEnrollments } from "../../services/EnrollmentService";
+import { getStudentEnrollments } from "../../../services/EnrollmentService";
 import {
   submitFeedback,
   fetchFeedbacksByStudentAndCourse,
-} from "../../services/FeedbackService";
-import StarRating from "../../components/StarRating";
+} from "../../../services/FeedbackService";
+import StarRating from "../../../components/StarRating";
 
 const FeedbackForm = () => {
   const [enrollments, setEnrollments] = useState([]);
@@ -21,14 +21,12 @@ const FeedbackForm = () => {
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
-  /* ================== FETCH ENROLLMENTS ================== */
   useEffect(() => {
     getStudentEnrollments()
       .then(setEnrollments)
       .catch(console.error);
   }, []);
 
-  /* ================== DERIVE SELECTED ENROLLMENT ================== */
   useEffect(() => {
     const enrollment = enrollments.find(
       (e) => e.enrollmentId === Number(selectedEnrollmentId)
@@ -36,7 +34,6 @@ const FeedbackForm = () => {
     setSelectedEnrollment(enrollment || null);
   }, [selectedEnrollmentId, enrollments]);
 
-  /* ================== FETCH PAST FEEDBACKS ================== */
   useEffect(() => {
     if (!selectedEnrollment?.courseId) {
       setPastFeedbacks([]);
@@ -48,7 +45,6 @@ const FeedbackForm = () => {
       .catch(console.error);
   }, [selectedEnrollment]);
 
-  /* ================== VALIDATION ================== */
   const validate = () => {
   const errs = {};
 
@@ -104,7 +100,6 @@ const FeedbackForm = () => {
     }
   };
 
-  /* ================== UI ================== */
   return (
     <div className="container my-5">
       <div className="card shadow-lg rounded-4 border-0">

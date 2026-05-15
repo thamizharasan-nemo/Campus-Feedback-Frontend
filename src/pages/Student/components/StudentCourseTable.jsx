@@ -1,3 +1,4 @@
+
 function StudentCourseTable({ courses, onSort, sortBy, sortDir }) {
   const arrow = sortDir === "ASC" ? "⬆" : "⬇";
 

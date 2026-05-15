@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/PublicCourses.css";
+import "../../styles/public/PublicCourses.css";
 
 const PublicCourses = () => {
   return (

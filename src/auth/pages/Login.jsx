@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../services/AuthService"; 
-import "../../styles/Auth.css"
+import "../../styles/auth/Auth.css"
 
 function Login({ setIsAuthenticated }) {
 
@@ -71,7 +71,7 @@ function Login({ setIsAuthenticated }) {
             <label className="form-label" htmlFor="email">Email address</label>
             <input
               id="email" name="email" type="email"
-              className="form-control" placeholder="you@example.com"
+              className="form-control" placeholder="your_mail@mail.com"
               value={formData.email} onChange={handleChange}
               autoComplete="email"
             />

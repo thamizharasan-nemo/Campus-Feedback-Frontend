@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getUserFromToken } from "../utils/auth"; // adjust path if needed
-import "../styles/InstitutionLoginNew.css";
+import { getUserFromToken } from "../../../utils/auth";
+import "../../../styles/institution/InstitutionLoginNew.css";
 
 
 const HOW_CARDS = [
@@ -28,13 +28,12 @@ const HOW_CARDS = [
 ];
 
 function InstitutionLogin() {
-  const navigate    = useNavigate();
-  const user        = getUserFromToken(); // if already logged in, redirect straight away
+  const navigate = useNavigate();
+  const user = getUserFromToken(); 
 
   const [identityNo, setIdentityNo] = useState("");
-  const [error, setError]           = useState("");
+  const [error, setError] = useState("");
 
-  // If already authenticated, show a shortcut banner instead
   const isLoggedIn = !!user;
 
   const handleAccess = () => {
@@ -43,18 +42,15 @@ function InstitutionLogin() {
       return;
     }
     setError("");
-    // Navigate to login carrying the identity no as state so Login can pre-fill
     navigate("/login", { state: { identityNo: identityNo.trim() } });
   };
 
   return (
     <div className="inst-login-page">
 
-      {/* ── HERO ── */}
       <section className="inst-hero">
         <div className="inst-hero-inner">
 
-          {/* Left copy */}
           <div className="inst-hero-copy">
             <h1>Access Your<br /><span>Institution</span></h1>
             <p>
@@ -63,11 +59,9 @@ function InstitutionLogin() {
             </p>
           </div>
 
-          {/* Right card */}
           <div className="inst-access-card">
 
             {isLoggedIn ? (
-              /* Already logged in — show a shortcut */
               <>
                 <p className="inst-logged-greeting">
                   You're signed in as <strong>{user.sub}</strong>.
@@ -80,7 +74,6 @@ function InstitutionLogin() {
                 </button>
               </>
             ) : (
-              /* Entry form */
               <>
                 <h2>Enter your Identity No</h2>
                 <p className="inst-card-sub">
@@ -126,7 +119,6 @@ function InstitutionLogin() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ── */}
       <section className="inst-how">
         <div className="inst-how-inner">
           <h3>How It Works</h3>
@@ -142,7 +134,6 @@ function InstitutionLogin() {
         </div>
       </section>
 
-      {/* ── ADMIN CTA ── */}
       <section className="inst-cta">
         <div className="inst-cta-inner">
           <h4>Are you an Admin?</h4>

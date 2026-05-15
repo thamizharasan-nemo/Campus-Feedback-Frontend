@@ -4,16 +4,8 @@ import {
   searchInstructors,
 } from "../../../services/InstructorService";
 import InstructorCard from "../components/InstructorCard";
-import "../../../styles/Instructors.css";
+import "../../../styles/instructors/Instructors.css";
 
-/*
-  AdminInstructors — same layout as StudentInstructors.
-  The difference is isAdmin={true} is passed to InstructorCard,
-  which renders the course assign/unassign panel below the feedback.
-
-  The assign panel fetches unassigned courses itself via
-  getAllUnassignedCoursesByInstitution() so each card is self-contained.
-*/
 
 function AdminInstructors() {
   const [instructors, setInstructors] = useState([]);

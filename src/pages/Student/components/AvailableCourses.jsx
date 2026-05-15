@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Card, ListGroup, Button, Alert, Spinner } from "react-bootstrap";
-import { getAllCourses } from "../../services/CourseService";
+import { getAllCourses } from "../../../services/CourseService";
 import {
   getStudentEnrollments,
   enrollToCourse,
-} from "../../services/EnrollmentService";
+} from "../../../services/EnrollmentService";
 
 const MAX_ENROLLMENTS = 10;
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "../../services/AuthService"; // adjust path to match your project
-import "../../styles/Auth.css";
+import { register } from "../../services/AuthService"; 
+import "../../styles/auth/Auth.css";
 
 const INITIAL_FORM = {
   username: "",
@@ -119,7 +119,7 @@ function Register() {
             <label className="form-label" htmlFor="username">Full name</label>
             <input
               id="username" name="username" type="text"
-              className="form-control" placeholder="e.g. Ravi Kumar"
+              className="form-control" placeholder="e.g. Your Name"
               value={formData.username} onChange={handleChange}
               autoComplete="name"
             />
@@ -142,7 +142,7 @@ function Register() {
             <label className="form-label" htmlFor="email">Email address</label>
             <input
               id="email" name="email" type="email"
-              className="form-control" placeholder="you@example.com"
+              className="form-control" placeholder="your_mail@mail.com"
               value={formData.email} onChange={handleChange}
               autoComplete="email"
             />

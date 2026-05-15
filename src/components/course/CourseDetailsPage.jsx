@@ -7,7 +7,7 @@ import {
 } from "../../services/EnrollmentService";
 import { getFeedbacksByCourse } from "../../services/FeedbackService";
 
-import "../../styles/CourseDetailsPage.css";
+import "../../styles/course/CourseDetailsPage.css";
 import StarRating from "../StarRating";
 
 function CourseDetailsPage() {
@@ -69,7 +69,7 @@ function CourseDetailsPage() {
 
         <div className="course-stats">
           <span className="stat-badge">
-            ⭐ {course.avgRating?.toFixed(1) || "N/A"}
+            ⭐ {course.avgRating?.toFixed(1) || "No rating"}
           </span>
           <span className="stat-badge secondary">
             💬 {course.feedbackCount || 0} Feedbacks
@@ -115,7 +115,7 @@ function CourseDetailsPage() {
               <div className="feedback-header">
                 <div className="feedback-user">
                   <div className="avatar">
-                    {feedback.anonymous ? "👤" : feedback.studentName.charAt(0)}
+                    {feedback.anonymous ? "anonymous" : feedback.studentName.charAt(0)}
                   </div>
                   <div>
                     <p className="username">

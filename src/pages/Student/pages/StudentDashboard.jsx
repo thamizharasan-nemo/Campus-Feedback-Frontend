@@ -1,13 +1,12 @@
 import React from "react";
 import StudentAnalytics from "./StudentAnalytics";
-import EnrolledCourses from "./EnrolledCourses";
-import AvailableCourses from "./AvailableCourses";
+import EnrolledCourses from "../components/EnrolledCourses";
+import AvailableCourses from "../components/AvailableCourses";
 import MyFeedbacks from "./MyFeedbacks";
 
 const StudentDashboard = () => {
   return (
     <div className="min-vh-100 bg-light">
-      {/* Header */}
       <header className="bg-primary text-white py-4 shadow-sm">
         <div className="container">
           <h2 className="fw-bold mb-1">🎓 Student Dashboard</h2>
@@ -24,7 +23,6 @@ const StudentDashboard = () => {
         </div>
       </section>
 
-      {/* Courses Section */}
       <section className="py-4">
         <div className="container">
           <div className="row g-4">
@@ -38,7 +36,6 @@ const StudentDashboard = () => {
         </div>
       </section>
 
-      {/* Feedback Section */}
       <section className="py-4 pb-5">
         <div className="container">
           <MyFeedbacks />

@@ -1,10 +1,10 @@
 import PublicDashboard from "../pages/public/PublicDashboard";
-import InstitutionDashboard from "../pages/Institution/InstitutionDashboard";
+import InstitutionDashboard from "../pages/Institution/pages/InstitutionDashboard";
 import { isAuthenticated } from "../utils/auth";
 
 const DashboardRouter = () => {
   return isAuthenticated() 
-  ? (<PublicDashboard />) 
+  ? (<InstitutionDashboard />) 
   : (<PublicDashboard />);
 };
 

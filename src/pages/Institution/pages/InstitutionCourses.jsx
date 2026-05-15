@@ -6,84 +6,68 @@ import {
   getAllUnassignedCoursesByInstitution,
   getCoursesNotAssigned,
   getCoursesWithoutFeedback,
-} from "../../services/CourseService"; // adjust path
+} from "../../../services/CourseService"; 
 
 import {
   getTotalCourses,
   getTotalInstructors,
   getTotalFeedbacks,
-} from "../../services/InstitutionService"; // adjust path
+} from "../../../services/InstitutionService"; 
+import CourseTable    from "../Components/CourseTable";   
+import CourseAnalytics from "../Components/CourseAnalytics";
+import PopularCourses from "../Components/PopularCourses";   
 
-import CourseTable    from "./Components/CourseTable";    // adjust path
-import CourseAnalytics from "./Components/CourseAnalytics"; // adjust path
-import PopularCourses from "./Components/PopularCourses";   // adjust path
+import "../../../styles/institution/InstitutionCourses.css";
 
-import "../../styles/InstitutionCourses.css";
-
-/*
-  Tabs:
-    "all"         — paginated search (GET /courses/institution/search)
-    "unassigned"  — no instructor yet (GET /courses/instructor)
-    "no-feedback" — no feedback yet  (GET /courses/feedbacks)
-*/
 
 const TABS = [
-  { id: "all",         label: "All Courses" },
-  { id: "unassigned",  label: "No Instructor" },
+  { id: "all", label: "All Courses" },
+  { id: "unassigned", label: "No Instructor" },
   { id: "no-feedback", label: "No Feedback" },
 ];
 
 function InstitutionCourses() {
-  // ── Stats ──
-  const [totalCourses, setTotalCourses]         = useState(0);
+  const [totalCourses, setTotalCourses] = useState(0);
   const [totalInstructors, setTotalInstructors] = useState(0);
-  const [totalFeedbacks, setTotalFeedbacks]     = useState(0);
+  const [totalFeedbacks, setTotalFeedbacks] = useState(0);
 
-  // ── Main table ──
-  const [courses, setCourses]     = useState([]);
-  const [loading, setLoading]     = useState(true);
-  const [error, setError]         = useState("");
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // ── Pagination ──
-  const [page, setPage]           = useState(0);
+  const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const PAGE_SIZE = 8;
 
-  // ── Sort ──
-  const [sortBy, setSortBy]       = useState("courseName");
-  const [sortDir, setSortDir]     = useState("ASC");
+  const [sortBy, setSortBy] = useState("courseName");
+  const [sortDir, setSortDir] = useState("ASC");
 
-  // ── Search ──
   const [searchInput, setSearchInput] = useState("");
-  const [keyword, setKeyword]         = useState("");
+  const [keyword, setKeyword] = useState("");
 
-  // ── Tab ──
-  const [activeTab, setActiveTab]   = useState("all");
+  const [activeTab, setActiveTab] = useState("all");
 
-  // ── Popular courses ──
   const [popularCourses, setPopularCourses] = useState([]);
 
-  // ── Load stats once ──
   useEffect(() => {
     Promise.allSettled([
       getTotalCourses(),
       getTotalInstructors(),
       getTotalFeedbacks(),
-    ]).then(([c, i, f]) => {
-      setTotalCourses(c.status === "fulfilled" ? c.value : 0);
-      setTotalInstructors(i.status === "fulfilled" ? i.value : 0);
-      setTotalFeedbacks(f.status === "fulfilled" ? f.value : 0);
+    ]).then(([course, instructor, feedback]) => {
+      setTotalCourses(course.status === "fulfilled" ? course.value : 0);
+      setTotalInstructors(instructor.status === "fulfilled" ? instructor.value : 0);
+      setTotalFeedbacks(feedback.status === "fulfilled" ? feedback.value : 0);
     });
 
     getPopularCourses(0, 6)
-      .then((res) => {
-        console.log("Result data: ", res);
-        setPopularCourses(res?.content ?? []);
+      .then((result) => {
+        console.log("Result data: ", result);
+        setPopularCourses(result?.content ?? []);
       })
       .catch(() => setPopularCourses([]));
   }, []);
 
-  // ── Load courses on tab / page / sort / keyword change ──
   useEffect(() => {
     fetchCourses();
   }, [activeTab, page, sortBy, sortDir, keyword]);
@@ -100,18 +84,15 @@ function InstitutionCourses() {
           sortDirection: sortDir,
           keyword,
         });
-        // res is PageResponseDTO: { content, totalPages, ... }
         setCourses(res?.content ?? []);
         setTotalPages(res?.totalPages ?? 0);
 
       } else if (activeTab === "unassigned") {
-        // GET /courses/instructor — courses without any instructor
         const res = await getCoursesNotAssigned();
         setCourses(Array.isArray(res) ? res : []);
         setTotalPages(0);
 
       } else if (activeTab === "no-feedback") {
-        // GET /courses/feedbacks — courses that have no feedback
         const res = await getCoursesWithoutFeedback();
         setCourses(Array.isArray(res) ? res : []);
         setTotalPages(0);
@@ -123,7 +104,6 @@ function InstitutionCourses() {
     }
   };
 
-  // ── Handlers ──
   const handleSearch = (e) => {
     e.preventDefault();
     setPage(0);
@@ -158,22 +138,18 @@ function InstitutionCourses() {
   return (
     <div className="courses-page">
 
-      {/* Page header */}
       <div className="courses-page-header">
         <h2>Institution Courses</h2>
         <p>Browse, search, and monitor all courses in your institution.</p>
       </div>
 
-      {/* Stat strip */}
       <CourseAnalytics
         totalCourses={totalCourses}
         totalFeedbacks={totalFeedbacks}
         totalInstructors={totalInstructors}
       />
 
-      {/* Toolbar */}
       <div className="courses-toolbar">
-        {/* Search (only for "all" tab) */}
         {activeTab === "all" && (
           <form style={{ display: "flex", gap: 8 }} onSubmit={handleSearch}>
             <input
@@ -190,7 +166,6 @@ function InstitutionCourses() {
           </form>
         )}
 
-        {/* Tab group */}
         <div className="courses-tab-group">
           {TABS.map((t) => (
             <button
@@ -204,19 +179,16 @@ function InstitutionCourses() {
         </div>
       </div>
 
-      {/* Error */}
       {error && (
         <div className="alert alert-danger" style={{ marginBottom: 16 }}>{error}</div>
       )}
 
-      {/* Loading */}
       {loading && (
         <div style={{ padding: "40px 0", textAlign: "center", color: "#6c757d", fontSize: 14 }}>
           Loading courses…
         </div>
       )}
 
-      {/* Table */}
       {!loading && (
         <CourseTable
           courses={courses}
@@ -226,20 +198,18 @@ function InstitutionCourses() {
         />
       )}
 
-      {/* Pagination (only for "all" tab) */}
       {isPaginated && !loading && (
         <div className="courses-pagination">
-          <button onClick={() => setPage((p) => p - 1)} disabled={page === 0}>
+          <button onClick={() => setPage((page) => page - 1)} disabled={page === 0}>
             ← Prev
           </button>
           <span className="page-info">Page {page + 1} of {totalPages}</span>
-          <button onClick={() => setPage((p) => p + 1)} disabled={page >= totalPages - 1}>
+          <button onClick={() => setPage((page) => page + 1)} disabled={page >= totalPages - 1}>
             Next →
           </button>
         </div>
       )}
 
-      {/* Popular courses */}
       {popularCourses.length > 0 && (
         <>
           <div className="courses-section-sep" />

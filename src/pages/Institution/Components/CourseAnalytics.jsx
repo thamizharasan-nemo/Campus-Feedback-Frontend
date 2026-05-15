@@ -1,4 +1,3 @@
-/* CourseAnalytics.jsx */
 
 function CourseAnalytics({ totalCourses, totalFeedbacks, totalInstructors }) {
   const stats = [

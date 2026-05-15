@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import "../styles/InstitutionLogin.css"
+import "../../../styles/institution/InstitutionLogin.css"
 
 
 export function InstitutionLayout() {
