@@ -15,15 +15,23 @@ export const register = (
   role,
   email,
   password,
-  institutionId,
+  institutionCode,
 ) => {
-  return api.post(`${AUTH}/register/${institutionId}`, {
-    username,
-    identityNo,
-    role,
-    email,
-    password,
-  });
+  return api.post(
+    `${AUTH}/register`,
+    {
+      username,
+      identityNo,
+      role,
+      email,
+      password,
+    },
+    {
+      params: {
+        institutionCode,
+      },
+    },
+  );
 };
 
 export const registerInstitution = (

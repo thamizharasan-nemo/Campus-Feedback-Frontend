@@ -68,7 +68,7 @@ const AvailableCourses = () => {
     <Card className="shadow-sm border-0 h-100">
       <Card.Body>
         <Card.Title className="fw-bold text-info mb-3">
-          ➕ Available Courses
+          Available Courses
         </Card.Title>
 
         {message && <Alert variant="info">{message}</Alert>}

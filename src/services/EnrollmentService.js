@@ -10,7 +10,7 @@ export const getStudentEnrollments = () =>
   api.get(`${ENROLLMENTS}/student`);
 
 export const enrollToCourse = (courseId) => {
-  return api.post(ENROLLMENTS, {
+  return api.post(`${ENROLLMENTS}`, {
     courseId,
   });
 };

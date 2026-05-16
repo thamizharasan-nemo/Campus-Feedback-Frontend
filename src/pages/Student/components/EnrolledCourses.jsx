@@ -25,7 +25,7 @@ const EnrolledCourses = () => {
     <Card className="shadow-sm border-0 h-100">
       <Card.Body>
         <Card.Title className="fw-bold text-primary mb-3">
-          📚 My Enrolled Courses
+          My Enrolled Courses
         </Card.Title>
 
         {loading ? (

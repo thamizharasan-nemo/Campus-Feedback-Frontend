@@ -55,7 +55,7 @@ const StudentAnalytics = () => {
 
   return (
     <section className="my-4">
-      <h4 className="fw-bold mb-3">📊 Institution Insights</h4>
+      <h4 className="fw-bold mb-3">Institution Insights</h4>
 
       <Row className="g-4 mb-4">
         <Col md={3}>
@@ -81,7 +81,7 @@ const StudentAnalytics = () => {
           <Card className="shadow-sm border-0">
             <Card.Body>
               <Card.Title className="fw-bold text-primary mb-3">
-                🏆 Popular Courses
+                Popular Courses
               </Card.Title>
 
               {topCourses.length > 0 ? (

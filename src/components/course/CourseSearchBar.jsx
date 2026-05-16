@@ -29,7 +29,7 @@ const CourseSearchBar = ({
       />
 
       <button className="course-search-btn" onClick={handleSearch}>
-        🔍 Search
+        Search
       </button>
     </div>
   );

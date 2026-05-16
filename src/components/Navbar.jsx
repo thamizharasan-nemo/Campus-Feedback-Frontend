@@ -71,6 +71,9 @@ function Navbar({ isAuthenticated, onLogout }) {
           {/* Student */}
           {isAuthenticated && isStudent && (
             <>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/institution/dashboard">Institution</NavLink>
+              </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/student/dashboard">Dashboard</NavLink>
               </li>
@@ -81,12 +84,12 @@ function Navbar({ isAuthenticated, onLogout }) {
                 <NavLink className="nav-link" to="/student/instructors">Instructors</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/student/feedback">Feedback</NavLink>
+                <NavLink className="nav-link" to="/student/feedback">Submit Feedback</NavLink>
               </li>
             </>
           )}
 
-          {/* Auth buttons */}
+          {/* Auth */}
           <li className="nav-item ms-2">
             {!isAuthenticated ? (
               <div className="d-flex gap-2">

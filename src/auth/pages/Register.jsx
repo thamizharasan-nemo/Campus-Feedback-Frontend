@@ -9,7 +9,7 @@ const INITIAL_FORM = {
   email: "",
   password: "",
   role: "STUDENT",
-  institutionId: "",
+  institutionCode: "",
 };
 
 function Register() {
@@ -32,9 +32,9 @@ function Register() {
 
   
   const validate = () => {
-    const { username, identityNo, email, password, institutionId } = formData;
+    const { username, identityNo, email, password, institutionCode } = formData;
 
-    if (!username.trim() || !identityNo.trim() || !email.trim() || !password || !institutionId) {
+    if (!username.trim() || !identityNo.trim() || !email.trim() || !password || !institutionCode) {
       return "Please fill in all fields.";
     }
     if (username.trim().length < 3 || username.trim().length > 50) {
@@ -50,7 +50,7 @@ function Register() {
     if (password.length < 6 || password.length > 20) {
       return "Password must be 6–20 characters.";
     }
-    if (isNaN(Number(institutionId)) || Number(institutionId) <= 0) {
+    if (isNaN(Number(institutionCode)) || Number(institutionCode) <= 0) {
       return "Institution ID must be a valid number.";
     }
     return null;
@@ -63,7 +63,7 @@ function Register() {
 
     setLoading(true);
     try {
-      const { username, identityNo, role, email, password, institutionId } = formData;
+      const { username, identityNo, role, email, password, institutionCode } = formData;
       
       await register(
         username.trim(),
@@ -71,7 +71,7 @@ function Register() {
         role,
         email.trim(),
         password,
-        Number(institutionId)
+        institutionCode.trim(),
       );
       setSuccess("Account created! Redirecting to login…");
       setTimeout(() => navigate("/login"), 2000);
@@ -104,11 +104,11 @@ function Register() {
         <form className="auth-form" onSubmit={handleSubmit} noValidate>
 
           <div className="mb-3">
-            <label className="form-label" htmlFor="institutionId">Institution ID</label>
+            <label className="form-label" htmlFor="institutionCode">Institution Code</label>
             <input
-              id="institutionId" name="institutionId" type="number"
-              className="form-control" placeholder="e.g. 1"
-              value={formData.institutionId} onChange={handleChange}
+              id="institutionCode" name="institutionCode" type="text"
+              className="form-control" placeholder="e.g. 7142"
+              value={formData.institutionCode} onChange={handleChange}
             />
             <div className="form-text">Ask your institution's admin for this number.</div>
           </div>

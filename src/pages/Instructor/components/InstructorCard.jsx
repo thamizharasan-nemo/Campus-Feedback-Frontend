@@ -47,7 +47,7 @@ function getPerfBadge(rating) {
     };
   }
   return {
-    label: "⚠ Needs Work",
+    label: "Needs Work",
     cls: "low",
   };
 }
