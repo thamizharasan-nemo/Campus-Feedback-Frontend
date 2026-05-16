@@ -1,11 +1,9 @@
-/* GLOBAL */
 .public-page {
   font-family: "Inter", system-ui, sans-serif;
   color: #1f2937;
   background: #f7f9fc;
 }
 
-/* HERO */
 .hero {
   background: linear-gradient(135deg, #5b7cfa, #7f8cff);
   padding: 80px 20px;
@@ -55,7 +53,6 @@
   cursor: pointer;
 }
 
-/* SECTIONS */
 .section {
   padding: 70px 20px;
   max-width: 1200px;
@@ -74,7 +71,6 @@
   margin-bottom: 50px;
 }
 
-/* HOW IT WORKS */
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -99,7 +95,6 @@
   color: #5b7cfa;
 }
 
-/* COURSES */
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -118,7 +113,6 @@
   margin-bottom: 12px;
 }
 
-/* TOP COURSES */
 .top-course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -142,7 +136,6 @@
   font-size: 0.95rem;
 }
 
-/* FOOTER */
 .footer {
   padding: 40px 20px;
   text-align: center;

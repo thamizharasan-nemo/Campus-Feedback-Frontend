@@ -6,19 +6,18 @@ import {
   getAllUnassignedCoursesByInstitution,
   getCoursesNotAssigned,
   getCoursesWithoutFeedback,
-} from "../../../services/CourseService"; 
+} from "../../../services/CourseService";
 
 import {
   getTotalCourses,
   getTotalInstructors,
   getTotalFeedbacks,
-} from "../../../services/InstitutionService"; 
-import CourseTable    from "../Components/CourseTable";   
+} from "../../../services/InstitutionService";
+import CourseTable from "../Components/CourseTable";
 import CourseAnalytics from "../Components/CourseAnalytics";
-import PopularCourses from "../Components/PopularCourses";   
+import PopularCourses from "../Components/PopularCourses";
 
 import "../../../styles/institution/InstitutionCourses.css";
-
 
 const TABS = [
   { id: "all", label: "All Courses" },
@@ -56,7 +55,9 @@ function InstitutionCourses() {
       getTotalFeedbacks(),
     ]).then(([course, instructor, feedback]) => {
       setTotalCourses(course.status === "fulfilled" ? course.value : 0);
-      setTotalInstructors(instructor.status === "fulfilled" ? instructor.value : 0);
+      setTotalInstructors(
+        instructor.status === "fulfilled" ? instructor.value : 0,
+      );
       setTotalFeedbacks(feedback.status === "fulfilled" ? feedback.value : 0);
     });
 
@@ -86,12 +87,10 @@ function InstitutionCourses() {
         });
         setCourses(res?.content ?? []);
         setTotalPages(res?.totalPages ?? 0);
-
       } else if (activeTab === "unassigned") {
         const res = await getCoursesNotAssigned();
         setCourses(Array.isArray(res) ? res : []);
         setTotalPages(0);
-
       } else if (activeTab === "no-feedback") {
         const res = await getCoursesWithoutFeedback();
         setCourses(Array.isArray(res) ? res : []);
@@ -137,7 +136,6 @@ function InstitutionCourses() {
 
   return (
     <div className="courses-page">
-
       <div className="courses-page-header">
         <h2>Institution Courses</h2>
         <p>Browse, search, and monitor all courses in your institution.</p>
@@ -159,9 +157,13 @@ function InstitutionCourses() {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
-            <button type="submit" className="btn-search">Search</button>
+            <button type="submit" className="btn-search">
+              Search
+            </button>
             {keyword && (
-              <button type="button" className="btn-clear" onClick={handleClear}>Clear</button>
+              <button type="button" className="btn-clear" onClick={handleClear}>
+                Clear
+              </button>
             )}
           </form>
         )}
@@ -180,11 +182,20 @@ function InstitutionCourses() {
       </div>
 
       {error && (
-        <div className="alert alert-danger" style={{ marginBottom: 16 }}>{error}</div>
+        <div className="alert alert-danger" style={{ marginBottom: 16 }}>
+          {error}
+        </div>
       )}
 
       {loading && (
-        <div style={{ padding: "40px 0", textAlign: "center", color: "#6c757d", fontSize: 14 }}>
+        <div
+          style={{
+            padding: "40px 0",
+            textAlign: "center",
+            color: "#6c757d",
+            fontSize: 14,
+          }}
+        >
           Loading courses…
         </div>
       )}
@@ -200,11 +211,19 @@ function InstitutionCourses() {
 
       {isPaginated && !loading && (
         <div className="courses-pagination">
-          <button onClick={() => setPage((page) => page - 1)} disabled={page === 0}>
+          <button
+            onClick={() => setPage((page) => page - 1)}
+            disabled={page === 0}
+          >
             ← Prev
           </button>
-          <span className="page-info">Page {page + 1} of {totalPages}</span>
-          <button onClick={() => setPage((page) => page + 1)} disabled={page >= totalPages - 1}>
+          <span className="page-info">
+            Page {page + 1} of {totalPages}
+          </span>
+          <button
+            onClick={() => setPage((page) => page + 1)}
+            disabled={page >= totalPages - 1}
+          >
             Next →
           </button>
         </div>
@@ -216,7 +235,6 @@ function InstitutionCourses() {
           <PopularCourses courses={popularCourses} />
         </>
       )}
-
     </div>
   );
 }

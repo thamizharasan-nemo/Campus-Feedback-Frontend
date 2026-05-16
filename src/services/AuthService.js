@@ -7,9 +7,16 @@ export const login = (email, password) => {
     email,
     password,
   });
-}
+};
 
-export const register = (username, identityNo, role, email, password, institutionId) => {
+export const register = (
+  username,
+  identityNo,
+  role,
+  email,
+  password,
+  institutionId,
+) => {
   return api.post(`${AUTH}/register/${institutionId}`, {
     username,
     identityNo,
@@ -17,9 +24,18 @@ export const register = (username, identityNo, role, email, password, institutio
     email,
     password,
   });
-}
+};
 
-export const registerInstitution = (institutionName, institutionCode, institutionEmail, address, adminName, adminEmail, password, identityNo) => {
+export const registerInstitution = (
+  institutionName,
+  institutionCode,
+  institutionEmail,
+  address,
+  adminName,
+  adminEmail,
+  password,
+  identityNo,
+) => {
   return api.post(`${AUTH}/register/institution`, {
     institutionName,
     institutionCode,
@@ -28,15 +44,14 @@ export const registerInstitution = (institutionName, institutionCode, institutio
     adminName,
     adminEmail,
     password,
-    identityNo
+    identityNo,
   });
-}
+};
 
 export const refreshToken = () => {
   const refreshToken = localStorage.getItem("refreshToken");
   if (!refreshToken) return Promise.reject("No refresh token available");
   return api.post(`${AUTH}/refresh`, {
-    refreshToken
+    refreshToken,
   });
-}
-
+};

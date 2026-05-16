@@ -68,7 +68,7 @@ function Navbar({ isAuthenticated, onLogout }) {
             </>
           )}
 
-          {/* Student links */}
+          {/* Student */}
           {isAuthenticated && isStudent && (
             <>
               <li className="nav-item">

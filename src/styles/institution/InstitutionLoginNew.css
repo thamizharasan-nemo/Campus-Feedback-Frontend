@@ -1,36 +1,31 @@
-/* ── InstitutionLogin.css ── */
 
 .inst-login-page {
   background: #f8f9fa;
   min-height: calc(100vh - 70px);
 }
 
-/* ── HERO ── */
+
 .inst-hero {
-  background: #0d6efd;
-  padding: 60px 24px;
+  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+  padding: 90px 24px;
 }
 
 .inst-hero-inner {
-  max-width: 960px;
+  max-width: 1180px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 70px;
   align-items: center;
-  gap: 48px;
 }
 
-/* Left copy */
-.inst-hero-copy {
-  flex: 1;
-  color: #fff;
-}
 
 .inst-hero-copy h1 {
-  font-size: 38px;
+  font-size: 3.4rem;
   font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 16px;
+  line-height: 1.15;
   color: #fff;
+  margin-bottom: 22px;
 }
 
 .inst-hero-copy h1 span {
@@ -38,214 +33,298 @@
 }
 
 .inst-hero-copy p {
-  font-size: 15.5px;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.65;
-  max-width: 360px;
+  max-width: 620px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.9;
+  font-size: 1.05rem;
+  margin-bottom: 36px;
 }
 
-/* Right card */
-.inst-access-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 32px 28px;
-  width: 100%;
-  max-width: 360px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+
+.inst-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
-.inst-access-card h2 {
-  font-size: 19px;
+.inst-mini-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px 18px;
+  backdrop-filter: blur(10px);
+}
+
+.inst-mini-card h5 {
+  color: #fff;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #212529;
   margin-bottom: 6px;
 }
 
+.inst-mini-card p {
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+.inst-access-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 38px 34px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.inst-access-card h2 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #1a202c;
+  margin-bottom: 10px;
+}
+
 .inst-card-sub {
-  font-size: 13.5px;
   color: #6c757d;
-  margin-bottom: 20px;
-  line-height: 1.55;
+  line-height: 1.7;
+  font-size: 14px;
+  margin-bottom: 26px;
 }
 
 .inst-alert {
-  font-size: 13.5px;
-  padding: 9px 12px;
-  border-radius: 6px;
-  margin-bottom: 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-bottom: 18px;
 }
 
 .inst-label {
   display: block;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   color: #343a40;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .inst-input {
-  font-size: 14px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  border-color: #ced4da;
-  margin-bottom: 14px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+  padding: 14px 16px;
+  font-size: 15px;
+  margin-bottom: 18px;
+  transition: 0.2s ease;
 }
 
 .inst-input:focus {
   border-color: #0d6efd;
-  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.13);
+  box-shadow: 0 0 0 4px rgba(13,110,253,0.1);
 }
 
 .inst-btn {
   width: 100%;
-  padding: 10px;
-  font-size: 14.5px;
-  font-weight: 600;
-  border-radius: 6px;
+  padding: 13px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
 }
 
 .inst-divider {
   text-align: center;
-  font-size: 12.5px;
+  margin: 18px 0;
   color: #adb5bd;
-  margin: 14px 0;
+  font-size: 13px;
+  position: relative;
+}
+
+.inst-divider::before,
+.inst-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #e9ecef;
+}
+
+.inst-divider::before {
+  left: 0;
+}
+
+.inst-divider::after {
+  right: 0;
 }
 
 .inst-btn-outline {
   width: 100%;
-  padding: 9px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 6px;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 600;
   display: block;
   text-align: center;
-  margin-bottom: 14px;
   text-decoration: none;
+  margin-bottom: 18px;
 }
 
 .inst-hint {
-  font-size: 13px;
-  color: #6c757d;
   text-align: center;
+  font-size: 14px;
+  color: #6c757d;
   margin: 0;
 }
 
 .inst-hint a {
-  color: #0d6efd;
-  font-weight: 500;
   text-decoration: none;
+  font-weight: 600;
 }
-.inst-hint a:hover { text-decoration: underline; }
 
-/* Already logged in */
+.inst-hint a:hover {
+  text-decoration: underline;
+}
+
 .inst-logged-greeting {
   font-size: 14px;
   color: #495057;
-  margin-bottom: 16px;
-  line-height: 1.55;
+  margin-bottom: 20px;
+  line-height: 1.7;
 }
 
-/* ── HOW IT WORKS ── */
+
 .inst-how {
-  padding: 56px 24px;
   background: #fff;
-  border-bottom: 1px solid #dee2e6;
+  padding: 90px 24px;
 }
 
 .inst-how-inner {
-  max-width: 880px;
+  max-width: 1180px;
   margin: 0 auto;
-  text-align: center;
 }
 
-.inst-how h3 {
-  font-size: 22px;
-  font-weight: 700;
-  color: #212529;
-  margin-bottom: 32px;
+.inst-how-inner h3 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1a202c;
+  margin-bottom: 14px;
+}
+
+.inst-how-sub {
+  text-align: center;
+  color: #6c757d;
+  max-width: 680px;
+  margin: 0 auto 54px;
+  line-height: 1.8;
 }
 
 .inst-how-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
 
 .inst-how-card {
-  background: #f8f9fa;
+  background: #fff;
   border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 24px 16px;
-  text-align: center;
+  border-radius: 18px;
+  padding: 32px 26px;
+  transition: 0.2s ease;
+}
+
+.inst-how-card:hover {
+  transform: translateY(-4px);
 }
 
 .inst-how-icon {
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 18px;
 }
 
 .inst-how-card h6 {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 700;
-  color: #212529;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
+  color: #1a202c;
 }
 
 .inst-how-card p {
-  font-size: 13px;
   color: #6c757d;
-  line-height: 1.55;
+  line-height: 1.7;
   margin: 0;
+  font-size: 14px;
 }
 
-/* ── ADMIN CTA ── */
+
 .inst-cta {
-  background: #212529;
-  padding: 48px 24px;
+  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+  padding: 90px 24px;
   text-align: center;
 }
 
 .inst-cta-inner {
-  max-width: 560px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
 .inst-cta h4 {
-  font-size: 20px;
-  font-weight: 700;
   color: #fff;
-  margin-bottom: 8px;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 14px;
 }
 
 .inst-cta p {
-  font-size: 14.5px;
-  color: rgba(255, 255, 255, 0.65);
-  margin-bottom: 20px;
-  line-height: 1.6;
+  color: rgba(255,255,255,0.76);
+  line-height: 1.9;
+  margin-bottom: 28px;
+  font-size: 1rem;
 }
 
 .inst-cta-btn {
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 6px;
+  padding: 13px 28px;
+  border-radius: 12px;
+  font-weight: 700;
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 720px) {
+
+@media (max-width: 992px) {
+
   .inst-hero-inner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 28px;
+    grid-template-columns: 1fr;
   }
+
   .inst-access-card {
-    max-width: 100%;
+    max-width: 520px;
   }
+
+}
+
+@media (max-width: 768px) {
+
+  .inst-hero {
+    padding: 70px 20px;
+  }
+
   .inst-hero-copy h1 {
-    font-size: 28px;
+    font-size: 2.5rem;
   }
-  .inst-hero-copy p {
-    max-width: 100%;
+
+  .inst-mini-grid {
+    grid-template-columns: 1fr;
   }
+
+  .inst-how {
+    padding: 70px 20px;
+  }
+
+  .inst-how-inner h3 {
+    font-size: 1.8rem;
+  }
+
+  .inst-cta {
+    padding: 70px 20px;
+  }
+
+  .inst-cta h4 {
+    font-size: 1.7rem;
+  }
+
 }

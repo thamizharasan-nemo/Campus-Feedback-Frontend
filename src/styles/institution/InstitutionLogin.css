@@ -1,15 +1,10 @@
-/* =========================
-   PAGE WRAPPER
-========================= */
+
 
 .institution-page {
   background: #dfedfc;
   padding: 4rem 1.5rem;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
 
 .institution-hero {
   max-width: 1200px;
@@ -23,7 +18,6 @@
   align-items: center;
 }
 
-/* Image */
 
 .hero-image {
   border-radius: 22px;
@@ -37,7 +31,6 @@
   object-fit: cover;
 }
 
-/* Right content */
 
 .hero-content h2 {
   font-size: 2rem;
@@ -62,7 +55,6 @@
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
 }
 
-/* Primary Button */
 
 .hero-content button {
   width: 100%;
@@ -91,9 +83,7 @@
   color: #64748b;
 }
 
-/* =========================
-   HOW SECTION
-========================= */
+
 
 .institution-how {
   max-width: 1200px;
@@ -138,9 +128,7 @@
   line-height: 1.6;
 }
 
-/* =========================
-   CTA SECTION
-========================= */
+
 
 .institution-cta {
   text-align: center;
@@ -175,9 +163,7 @@
   box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+
 
 @media (max-width: 992px) {
   .hero-grid {

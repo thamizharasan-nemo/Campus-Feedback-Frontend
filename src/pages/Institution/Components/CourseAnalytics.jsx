@@ -1,8 +1,7 @@
-
 function CourseAnalytics({ totalCourses, totalFeedbacks, totalInstructors }) {
   const stats = [
-    { label: "Total Courses",     value: totalCourses,     emoji: "📚" },
-    { label: "Total Feedbacks",   value: totalFeedbacks,   emoji: "💬" },
+    { label: "Total Courses", value: totalCourses, emoji: "📚" },
+    { label: "Total Feedbacks", value: totalFeedbacks, emoji: "💬" },
     { label: "Total Instructors", value: totalInstructors, emoji: "👨‍🏫" },
   ];
 

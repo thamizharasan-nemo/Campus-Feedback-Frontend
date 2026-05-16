@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../../styles/institution/InstitutionLogin.css"
 
 
@@ -81,9 +82,9 @@ export function InstitutionLanding() {
       <section className="institution-cta">
         <h4>Are you an Admin?</h4>
         <p>Create and manage institutions with full control.</p>
-        <button className="outline-btn">
-          Create New Institution
-        </button>
+        <Link to="/institution/register" className="outline-btn">
+  Create New Institution
+</Link>
       </section>
 
     </div>

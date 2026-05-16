@@ -8,12 +8,11 @@ import "../../../styles/instructors/Instructors.css";
 
 function StudentInstructors() {
   const [instructors, setInstructors] = useState([]);
-  const [loading, setLoading]         = useState(true);
-  const [error, setError]             = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [keyword, setKeyword]         = useState("");
+  const [keyword, setKeyword] = useState("");
 
-  // Same pattern as AdminInstructors — fetch on keyword change
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
@@ -28,11 +27,14 @@ function StudentInstructors() {
         if (!cancelled) setInstructors(Array.isArray(data) ? data : []);
       })
       .catch(() => {
-        if (!cancelled) setError("Failed to load instructors. Please try again.");
+        if (!cancelled)
+          setError("Failed to load instructors. Please try again.");
       })
       .finally(() => !cancelled && setLoading(false));
 
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [keyword]);
 
   const handleSearch = (e) => {
@@ -47,9 +49,10 @@ function StudentInstructors() {
 
   return (
     <div className="instructors-page container">
-
       <h3 className="fw-bold">Instructors</h3>
-      <p className="page-sub">Browse instructors in your institution and view student feedback.</p>
+      <p className="page-sub">
+        Browse instructors in your institution and view student feedback.
+      </p>
 
       <form className="instructor-search-bar" onSubmit={handleSearch}>
         <input
@@ -58,7 +61,9 @@ function StudentInstructors() {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <button type="submit" className="btn btn-primary btn-sm">Search</button>
+        <button type="submit" className="btn btn-primary btn-sm">
+          Search
+        </button>
         {keyword && (
           <button
             type="button"
@@ -73,7 +78,9 @@ function StudentInstructors() {
       {loading && <div className="instructors-state">Loading instructors…</div>}
 
       {error && (
-        <div className="alert alert-danger" style={{ maxWidth: 440 }}>{error}</div>
+        <div className="alert alert-danger" style={{ maxWidth: 440 }}>
+          {error}
+        </div>
       )}
 
       {!loading && !error && instructors.length === 0 && (
@@ -95,7 +102,6 @@ function StudentInstructors() {
           ))}
         </div>
       )}
-
     </div>
   );
 }

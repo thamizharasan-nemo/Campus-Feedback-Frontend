@@ -26,6 +26,9 @@ import CourseDetailsPage from "./components/course/CourseDetailsPage";
 import { logout as authLogout } from "./utils/auth";
 import AdminInstructors from "./pages/Instructor/pages/AdminInstructors";
 import StudentInstructors from "./pages/Instructor/pages/StudentInstructors";
+import About from "./pages/public/About";
+import Features from "./pages/public/Features";
+import InstitutionRegister from "./pages/Institution/pages/InstitutionRegister";
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(
@@ -52,6 +55,8 @@ function App() {
                         <Route path="/courses" element={<PublicCourses />} />
                         <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
                         <Route path="/instructors" element={<PublicInstructors />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/features" element={<Features />} />
 
                         {/* Auth */}
                         <Route
@@ -63,6 +68,9 @@ function App() {
                         {/* Institution */}
                         <Route path="/institution" element={<InstitutionLayout />}>
                             <Route index element={<InstitutionLogin />} />
+
+
+            <Route path="/institution/register" element={<InstitutionRegister />} />
 
                             <Route
                                 path="dashboard"
@@ -94,9 +102,9 @@ function App() {
                             <Route
                                 path="manage"
                                 element={
-                                    <AdminRoute>
+                                    <ProtectedRoute>
                                         <InstitutionManagement />
-                                    </AdminRoute>
+                                    </ProtectedRoute>
                                 }
                             />
                         </Route>

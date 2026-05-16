@@ -206,7 +206,6 @@ function PublicDashboard() {
         </div>
       </section>
 
-      {/* HOW */}
       <section className="how-section text-white text-center">
         <div className="container">
           <h2 className="fw-bold mb-4">How Institutions Use It</h2>
@@ -234,7 +233,6 @@ function PublicDashboard() {
   );
 }
 
-/* ---------- COMPONENTS ---------- */
 
 const FeatureCard = ({ title, text }) => (
   <div className="col-12 col-sm-6 col-md-4">

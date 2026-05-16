@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { getUserFromToken } from "../../../utils/auth";
 import "../../../styles/institution/InstitutionLoginNew.css";
 
-
 const HOW_CARDS = [
   {
     icon: "🏫",
@@ -29,7 +28,7 @@ const HOW_CARDS = [
 
 function InstitutionLogin() {
   const navigate = useNavigate();
-  const user = getUserFromToken(); 
+  const user = getUserFromToken();
 
   const [identityNo, setIdentityNo] = useState("");
   const [error, setError] = useState("");
@@ -47,20 +46,37 @@ function InstitutionLogin() {
 
   return (
     <div className="inst-login-page">
-
       <section className="inst-hero">
         <div className="inst-hero-inner">
-
           <div className="inst-hero-copy">
-            <h1>Access Your<br /><span>Institution</span></h1>
+            <h1>
+              Access Your
+              <br />
+              <span>Institution</span>
+            </h1>
             <p>
-              Students, teachers, and admins — enter your Identity No
-              to reach your institution's workspace.
+              Students, teachers, and admins — enter your Identity No to reach
+              your institution's workspace.
             </p>
+            <div className="inst-mini-grid">
+              <div className="inst-mini-card">
+                <h5>JWT</h5>
+                <p>Secure authentication with refresh tokens.</p>
+              </div>
+
+              <div className="inst-mini-card">
+                <h5>Multi</h5>
+                <p>Institution-based isolated architecture.</p>
+              </div>
+
+              <div className="inst-mini-card">
+                <h5>Analytics</h5>
+                <p>Track feedback and instructor performance.</p>
+              </div>
+            </div>
           </div>
 
           <div className="inst-access-card">
-
             {isLoggedIn ? (
               <>
                 <p className="inst-logged-greeting">
@@ -93,7 +109,10 @@ function InstitutionLogin() {
                   className="form-control inst-input"
                   placeholder="e.g. 21CS001 or 2023admin01"
                   value={identityNo}
-                  onChange={(e) => { setIdentityNo(e.target.value); setError(""); }}
+                  onChange={(e) => {
+                    setIdentityNo(e.target.value);
+                    setError("");
+                  }}
                   onKeyDown={(e) => e.key === "Enter" && handleAccess()}
                 />
 
@@ -106,7 +125,10 @@ function InstitutionLogin() {
 
                 <div className="inst-divider">or</div>
 
-                <Link to="/login" className="btn btn-outline-primary inst-btn-outline">
+                <Link
+                  to="/login"
+                  className="btn btn-outline-primary inst-btn-outline"
+                >
                   Sign in with email
                 </Link>
 
@@ -122,6 +144,10 @@ function InstitutionLogin() {
       <section className="inst-how">
         <div className="inst-how-inner">
           <h3>How It Works</h3>
+          <p className="inst-how-sub">
+            CampusFeedbacks helps institutions securely manage feedback,
+            courses, instructors, and analytics in one centralized platform.
+          </p>
           <div className="inst-how-grid">
             {HOW_CARDS.map((c) => (
               <div className="inst-how-card" key={c.title}>
@@ -137,13 +163,18 @@ function InstitutionLogin() {
       <section className="inst-cta">
         <div className="inst-cta-inner">
           <h4>Are you an Admin?</h4>
-          <p>Create and manage your institution with full control over users, courses, and feedback.</p>
-          <Link to="/institution/create" className="btn btn-outline-light inst-cta-btn">
+          <p>
+            Create and manage your institution with full control over users,
+            courses, and feedback.
+          </p>
+          <Link
+            to="/institution/register"
+            className="btn btn-outline-light inst-cta-btn"
+          >
             Create New Institution
           </Link>
         </div>
       </section>
-
     </div>
   );
 }

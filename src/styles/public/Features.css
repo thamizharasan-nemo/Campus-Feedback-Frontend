@@ -1,0 +1,99 @@
+.features-page {
+  background: #f8f9fa;
+}
+
+
+.features-hero {
+  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+  padding: 90px 20px;
+}
+
+.hero-desc {
+  max-width: 700px;
+  margin: 20px auto 0;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+}
+
+
+.section-light {
+  background: white;
+  padding: 80px 0;
+}
+
+.section-grey {
+  background: #f8f9fa;
+  padding: 80px 0;
+}
+
+.section-text {
+  color: #6c757d;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+
+.feature-box,
+.workflow-card {
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e9ecef;
+  padding: 30px 24px;
+  transition: 0.2s ease;
+}
+
+.feature-box:hover,
+.workflow-card:hover {
+  transform: translateY(-4px);
+}
+
+.feature-icon,
+.workflow-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.feature-box h5,
+.workflow-card h5 {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.feature-box p,
+.workflow-card p {
+  color: #6c757d;
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+.security-panel {
+  background: white;
+  border-radius: 14px;
+  padding: 30px;
+  border: 1px solid #e9ecef;
+}
+
+.security-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f3f5;
+  color: #495057;
+  font-weight: 500;
+}
+
+.security-item:last-child {
+  border-bottom: none;
+}
+
+
+.features-cta-section {
+  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+  padding: 90px 20px;
+}
+
+.cta-text {
+  color: rgba(255,255,255,0.8);
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.8;
+}
