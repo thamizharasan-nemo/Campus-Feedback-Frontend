@@ -60,50 +60,50 @@ const MyFeedbacks = () => {
           </div>
         ) : feedbacks.length > 0 ? (
           <>
-            {feedbacks.map((fb) => (
-              <Card key={fb.feedbackId} className="mb-3 border-light shadow-sm">
+            {feedbacks.map((feedback) => (
+              <Card key={feedback.feedbackId} className="mb-3 border-light shadow-sm">
                 <Card.Body>
                   <div className="d-flex justify-content-between align-items-start">
                     <div>
-                      <h6 className="fw-bold">{fb.courseName}</h6>
+                      <h6 className="fw-bold">{feedback.courseName}</h6>
                       <small className="text-muted">
-                        Instructor: {fb.instructorName || "N/A"}
+                        Instructor: {feedback.instructorName || "No instructor assigned"}
                       </small>
 
                       <div className="mt-2">
-                        {[...Array(fb.courseRating)].map((_, i) => (
+                        {[...Array(feedback.courseRating)].map((_, i) => (
                           <span key={i} className="text-warning">
                             ★
                           </span>
                         ))}
-                        {[...Array(5 - fb.courseRating)].map((_, i) => (
+
+                        {[...Array(5 - feedback.courseRating)].map((_, i) => (
                           <span key={i} className="text-secondary">
                             ☆
                           </span>
                         ))}
                       </div>
 
-                      <p className="mt-2 mb-1">{fb.courseComment}</p>
+                      <p className="mt-2 mb-1">{feedback.courseComment}</p>
                       <small className="text-muted">
                         Submitted on{" "}
-                        {new Date(fb.submittedAt).toLocaleDateString()}
+                        {new Date(feedback.submittedAt).toLocaleDateString()}
                       </small>
                     </div>
 
                     <Button
                       size="sm"
                       variant="outline-danger"
-                      disabled={deletingId === fb.feedbackId}
-                      onClick={() => handleDelete(fb.feedbackId)}
+                      disabled={deletingId === feedback.feedbackId}
+                      onClick={() => handleDelete(feedback.feedbackId)}
                     >
-                      {deletingId === fb.feedbackId ? "Deleting..." : "Delete"}
+                      {deletingId === feedback.feedbackId ? "Deleting..." : "Delete"}
                     </Button>
                   </div>
                 </Card.Body>
               </Card>
             ))}
 
-            {/* Pagination */}
             <Pagination className="justify-content-center mt-3">
               <Pagination.Prev
                 disabled={page === 0}
