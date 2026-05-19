@@ -31,17 +31,17 @@ function PublicDashboard() {
   const topInstructors = [
     {
       instructorId: 1,
-      instructorName: "Dr. Praveen",
+      instructorName: "Dr. Thamizh",
       instructorRating: 4.7,
     },
     {
       instructorId: 2,
-      instructorName: "Prof. Anjali",
+      instructorName: "Prof. Shivani",
       instructorRating: 4.5,
     },
     {
       instructorId: 3,
-      instructorName: "Prof. Ravi Kumar",
+      instructorName: "Prof. Sakthi",
       instructorRating: 4.3,
     },
   ];
@@ -58,7 +58,7 @@ function PublicDashboard() {
 
   return (
     <div className="public-dashboard">
-      {/* HERO */}
+
       <section className="hero-section text-white text-center">
         <div className="container">
           <h1 className="display-5 fw-bold">Campus Feedbacks</h1>
