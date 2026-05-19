@@ -22,6 +22,7 @@ const FeedbackForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
+    // Load student's enrolled courses on mount
     getStudentEnrollments()
       .then(setEnrollments)
       .catch(console.error);
@@ -29,6 +30,7 @@ const FeedbackForm = () => {
 
   useEffect(() => {
     const enrollment = enrollments.find(
+      // Find the selected enrollment based on the selectedEnrollmentId
       (e) => e.enrollmentId === Number(selectedEnrollmentId)
     );
     setSelectedEnrollment(enrollment || null);
@@ -40,54 +42,59 @@ const FeedbackForm = () => {
       return;
     }
 
+    // Load previous feedbacks for the selected course
     fetchFeedbacksByStudentAndCourse(selectedEnrollment.courseId)
       .then(setPastFeedbacks)
       .catch(console.error);
   }, [selectedEnrollment]);
 
+
+  // Validating form inputs before submission
   const validate = () => {
-  const errs = {};
+    const errs = {};
 
-  if (!selectedEnrollmentId) {
-    errs.enrollment = "Select a course";
-  }
+    if (!selectedEnrollmentId) {
+      errs.enrollment = "Select a course";
+    }
 
-  if (!selectedEnrollment) {
-    errs.enrollment = "Invalid course selection";
-  }
+    if (!selectedEnrollment) {
+      errs.enrollment = "Invalid course selection";
+    }
 
-  if (courseRating < 1) errs.courseRating = "Rate the course";
-  if (instructorRating < 1) errs.instructorRating = "Rate the instructor";
-  if (!courseComment.trim()) errs.courseComment = "Comment is required";
+    if (courseRating < 1) errs.courseRating = "Rate the course";
+    if (instructorRating < 1) errs.instructorRating = "Rate the instructor";
+    if (!courseComment.trim()) errs.courseComment = "Comment is required";
 
-  setErrors(errs);
-  return Object.keys(errs).length === 0;
-};
-
-  const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  if (!validate()) return;
-
-  if (!selectedEnrollment) {
-    console.error("Selected enrollment is null");
-    return;
-  }
-
-  const payload = {
-    courseId: selectedEnrollment.courseId,
-    instructorId: selectedEnrollment.instructorId,
-    courseRating,
-    instructorRating,
-    courseComment,
-    instructorComment,
-    anonymous,
+    setErrors(errs);
+    return Object.keys(errs).length === 0; // Will return true if no keys in the errs object
   };
 
-    try {
-      await submitFeedback(payload);
-      setSuccessMessage("✅ Feedback submitted successfully");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    if (!validate()) return;
+
+    if (!selectedEnrollment) {
+      console.error("Selected enrollment is null");
+      return;
+    }
+
+    const feedback = {
+      courseId: selectedEnrollment.courseId,
+      instructorId: selectedEnrollment.instructorId,
+      courseRating,
+      instructorRating,
+      courseComment,
+      instructorComment,
+      anonymous,
+    };
+
+    try {
+      // Submit feedback
+      await submitFeedback(feedback);
+      setSuccessMessage("Feedback submitted successfully");
+
+      // Refresh form data
       setCourseRating(0);
       setInstructorRating(0);
       setCourseComment("");
@@ -112,16 +119,16 @@ const FeedbackForm = () => {
             <div className="mb-3">
               <label className="form-label fw-semibold">Course</label>
               <select
-                className={`form-select ${
-                  errors.enrollment ? "is-invalid" : ""
-                }`}
+                className={`form-select 
+                  ${ errors.enrollment ? "is-invalid" : "" }`
+                }
                 value={selectedEnrollmentId}
                 onChange={(e) => setSelectedEnrollmentId(e.target.value)}
               >
                 <option value="">-- Select Course --</option>
-                {enrollments.map((e) => (
-                  <option key={e.enrollmentId} value={e.enrollmentId}>
-                    {e.courseName}
+                {enrollments.map((enrollment) => (
+                  <option key={enrollment.enrollmentId} value={enrollment.enrollmentId}>
+                    {enrollment.courseName}
                   </option>
                 ))}
               </select>

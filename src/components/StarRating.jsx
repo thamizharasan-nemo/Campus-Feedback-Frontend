@@ -10,13 +10,11 @@ const StarRating = ({
     <div style={{ display: "inline-flex", alignItems: "center" }}>
       {[1, 2, 3, 4, 5].map((value) => {
         const filled = value <= rating;
-
+        
         return (
           <span
             key={value}
-            onClick={
-              !readOnly && setRating ? () => setRating(value) : undefined
-            }
+            onClick={!readOnly && setRating ? () => setRating(value) : undefined}
             style={{
               cursor: readOnly ? "default" : "pointer",
               fontSize: size,
