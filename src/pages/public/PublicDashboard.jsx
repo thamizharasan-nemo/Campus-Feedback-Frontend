@@ -31,17 +31,17 @@ function PublicDashboard() {
   const topInstructors = [
     {
       instructorId: 1,
-      instructorName: "Dr. Praveen",
+      instructorName: "Dr. Thamizh",
       instructorRating: 4.7,
     },
     {
       instructorId: 2,
-      instructorName: "Prof. Divya",
+      instructorName: "Prof. Shivani",
       instructorRating: 4.5,
     },
     {
       instructorId: 3,
-      instructorName: "Prof. Rajesh",
+      instructorName: "Prof. Sakthi",
       instructorRating: 4.3,
     },
   ];
@@ -58,7 +58,7 @@ function PublicDashboard() {
 
   return (
     <div className="public-dashboard">
-      {/* HERO */}
+
       <section className="hero-section text-white text-center">
         <div className="container">
           <h1 className="display-5 fw-bold">Campus Feedbacks</h1>
@@ -82,7 +82,6 @@ function PublicDashboard() {
         </div>
       </section>
 
-      {/* WHY */}
       <section className="section-light text-center">
         <div className="container">
           <h2 className="fw-bold mb-4">Why Campus Feedbacks?</h2>
@@ -104,7 +103,6 @@ function PublicDashboard() {
         </div>
       </section>
 
-      {/* ANALYTICS */}
       <section id="analytics" className="analytics-section">
         <div className="container">
           <div className="text-center mb-5">
@@ -112,7 +110,6 @@ function PublicDashboard() {
             <p className="text-muted">Snapshot of real feedback insights</p>
           </div>
 
-          {/* METRICS */}
           <div className="row g-4 mb-5">
             <MetricCard
               title="Average Course Rating"
@@ -128,7 +125,6 @@ function PublicDashboard() {
             />
           </div>
 
-          {/* COURSES */}
           <AnalyticsBlock title="Top Performing Courses">
             <div className="row g-3">
               {topCourses.map((course) => (
@@ -158,7 +154,6 @@ function PublicDashboard() {
             </div>
           </AnalyticsBlock>
 
-          {/* INSTRUCTORS */}
           <AnalyticsBlock title="Top Rated Instructors">
             <div className="row g-3">
               {topInstructors.map((instructor) => (
@@ -184,7 +179,6 @@ function PublicDashboard() {
             </div>
           </AnalyticsBlock>
 
-          {/* DISTRIBUTION */}
           <AnalyticsBlock title="Rating Distribution">
             <Card className="analytics-card">
               <Card.Body>
