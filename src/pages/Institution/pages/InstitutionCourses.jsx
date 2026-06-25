@@ -69,10 +69,8 @@ function InstitutionCourses() {
   }, []);
 
   useEffect(() => {
-    fetchCourses();
-  }, [activeTab, page, sortBy, sortDir, keyword]);
 
-  const fetchCourses = async () => {
+    const fetchCourses = async () => {
     setLoading(true);
     setError("");
     try {
@@ -101,6 +99,10 @@ function InstitutionCourses() {
       setLoading(false);
     }
   };
+
+    fetchCourses();
+  }, [activeTab, page, sortBy, sortDir, keyword]);
+
 
   const handleSearch = (e) => {
     e.preventDefault();

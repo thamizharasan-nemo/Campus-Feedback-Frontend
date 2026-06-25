@@ -17,7 +17,7 @@ const FeedbackForm = () => {
   const [instructorComment, setInstructorComment] = useState("");
   const [anonymous, setAnonymous] = useState(false);
 
-  const [pastFeedbacks, setPastFeedbacks] = useState([]);
+  const [, setPastFeedbacks] = useState([]);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 

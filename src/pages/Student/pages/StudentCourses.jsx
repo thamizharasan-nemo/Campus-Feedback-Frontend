@@ -15,7 +15,10 @@ function StudentCourses() {
   const navigate = useNavigate();
 
 
-  const loadCourses = () => {
+
+  useEffect(() => {
+
+    const loadCourses = () => {
     setLoading(true);
 
     searchCourses({
@@ -29,7 +32,6 @@ function StudentCourses() {
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => {
     loadCourses();
   }, [keyword, sortBy, sortDir]);
 

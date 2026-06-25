@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Card, Button, Spinner, Pagination } from "react-bootstrap";
 import {
   getMyFeedbacks,
@@ -13,25 +13,26 @@ const MyFeedbacks = () => {
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
 
-  useEffect(() => {
-    loadFeedbacks();
-  }, [page]);
+const loadFeedbacks = useCallback(async () => {
+  setLoading(true);
 
-  const loadFeedbacks = async () => {
-    setLoading(true);
     try {
       const res = await getMyFeedbacks(page, size);
+
       console.log("Feedbacks loaded:", res);
+
       setFeedbacks(res.content);
-
-
       setTotalPages(res.totalPages);
     } catch (err) {
       console.error("Failed to load feedbacks", err);
     } finally {
       setLoading(false);
     }
-  };
+}, [page, size]);
+
+  useEffect(() => {
+  loadFeedbacks();
+}, [loadFeedbacks]);
 
   const handleDelete = async (feedbackId) => {
     if (!window.confirm("Delete this feedback?")) return;
