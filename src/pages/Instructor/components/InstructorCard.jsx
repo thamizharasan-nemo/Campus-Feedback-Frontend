@@ -241,7 +241,7 @@ function AssignPanel({ instructor }) { // Destructure instructor prop to get ins
           >
             <option value="">— Select a course to assign —</option>
             {unassignedCourses.map((course) => (
-              <option key={course.courseId} value={course.courseId}> // [value] Use courseId as value for setSelectedCourseId
+              <option key={course.courseId} value={course.courseId}> 
                 {course.courseName}
               </option>
             ))}

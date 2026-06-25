@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {
   searchCourses,
   getPopularCourses,
-  getAllUnassignedCoursesByInstitution,
   getCoursesNotAssigned,
   getCoursesWithoutFeedback,
 } from "../../../services/CourseService";

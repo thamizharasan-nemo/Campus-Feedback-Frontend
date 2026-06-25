@@ -12,7 +12,6 @@ import InstitutionLogin from "./pages/Institution/pages/InstitutionLogin";
 
 import { InstitutionLayout } from "./pages/Institution/Components/InstitutionLayout";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import AdminRoute from "./routes/AdminRoute";
 import DashboardRouter from "./routes/DashboardRouter";
 
 import InstitutionDashboard from "./pages/Institution/pages/InstitutionDashboard";
