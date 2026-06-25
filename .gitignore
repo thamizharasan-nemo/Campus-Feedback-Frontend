@@ -21,3 +21,5 @@ logs
 *.ntvs*
 *.njsproj
 *.sln
+
+.env

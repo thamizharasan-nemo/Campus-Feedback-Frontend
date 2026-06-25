@@ -14,9 +14,6 @@ function StudentCourses() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadCourses();
-  }, [keyword, sortBy, sortDir]);
 
   const loadCourses = () => {
     setLoading(true);
@@ -31,6 +28,10 @@ function StudentCourses() {
       .then((res) => setCourses(res.content))
       .finally(() => setLoading(false));
   };
+
+  useEffect(() => {
+    loadCourses();
+  }, [keyword, sortBy, sortDir]);
 
   const handleSort = (field) => {
     if (sortBy === field) {

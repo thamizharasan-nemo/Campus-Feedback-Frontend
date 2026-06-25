@@ -58,8 +58,8 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const err = validate();
-    if (err) { setError(err); return; }
+    const error = validate();
+    if (error) { setError(error); return; }
 
     setLoading(true);
     try {
@@ -73,15 +73,15 @@ function Register() {
         password,
         institutionCode.trim(),
       );
-      setSuccess("Account created! Redirecting to login…");
+      setSuccess("Account created, Redirecting to login…");
       setTimeout(() => navigate("/login"), 2000);
     } 
     
-    catch (err) {
+    catch (error) {
       setError(
-        typeof err === "string"
-          ? err
-          : err?.response?.data?.message || "Registration failed. Please try again."
+        typeof error === "string"
+          ? error
+          : error?.response?.data?.message || "Registration failed. Please try again."
       );
     } finally {
       setLoading(false);

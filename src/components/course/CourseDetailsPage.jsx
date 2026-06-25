@@ -19,9 +19,6 @@ function CourseDetailsPage() {
   const [enrolled, setEnrolled] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadCourseDetails();
-  }, [courseId]);
 
   const loadCourseDetails = async () => {
     try {
@@ -43,6 +40,10 @@ function CourseDetailsPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadCourseDetails();
+  }, [courseId]);
 
   if (loading) {
     return (
