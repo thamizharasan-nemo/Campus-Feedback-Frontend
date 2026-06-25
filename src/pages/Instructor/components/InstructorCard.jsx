@@ -135,8 +135,8 @@ function FeedbackPanel({ instructorId }) {
   );
 }
 
-
-function AssignPanel({ instructor }) {
+// Admin panel to assign/unassign courses to an instructor
+function AssignPanel({ instructor }) { // Destructure instructor prop to get instructorId
   const { instructorId } = instructor;
 
   const [assignedCourses, setAssignedCourses] = useState(
@@ -162,12 +162,16 @@ function AssignPanel({ instructor }) {
     if (!selectedCourseId) return;
     setBusy(true);
     try {
+      // API call to assign course to instructor
       await assignCourseToInstructor(instructorId, Number(selectedCourseId));
+      // Update local state of unassigned course after assignment
       const course = unassignedCourses.find(
         (c) => c.courseId === Number(selectedCourseId),
       );
+
       if (course) {
-        setAssignedCourses((prev) => [...prev, course]);
+        setAssignedCourses((prev) => [...prev, course]); // Add to assigned
+        // Remove from unassigned
         setUnassignedCourses((prev) =>
           prev.filter((c) => c.courseId !== Number(selectedCourseId)),
         );
@@ -184,6 +188,7 @@ function AssignPanel({ instructor }) {
   const handleUnassign = async (courseName) => {
     setBusy(true);
     try {
+      // Find course ID by name from assigned courses
       const courseObj = assignedCourses.find(
         (c) => c.courseName === courseName,
       );
@@ -195,7 +200,9 @@ function AssignPanel({ instructor }) {
       }
 
       await unassignCourseFromInstructor(instructorId, courseId);
+      // Update local state after unassignment
       setAssignedCourses((prev) => prev.filter((c) => c.courseId !== courseId));
+      // Add back to unassigned list
       setUnassignedCourses((prev) => [...prev, courseObj]);
       flash("Course unassigned.");
     } catch {
@@ -234,7 +241,7 @@ function AssignPanel({ instructor }) {
           >
             <option value="">— Select a course to assign —</option>
             {unassignedCourses.map((course) => (
-              <option key={course.courseId} value={course.courseId}>
+              <option key={course.courseId} value={course.courseId}> // [value] Use courseId as value for setSelectedCourseId
                 {course.courseName}
               </option>
             ))}

@@ -48,6 +48,9 @@ function Navbar({ isAuthenticated, onLogout }) {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/features">Features</NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/institution/register">Create Institution</NavLink>
+              </li>
             </>
           )}
 

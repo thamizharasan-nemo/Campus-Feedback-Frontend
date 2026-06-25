@@ -102,9 +102,9 @@
 
 
 
-.metric-card {
-  background: linear-gradient(135deg, #4789f3, var(--blue-end));
-  color: black;
+.metric-card-public {
+  background: linear-gradient(170deg, #669aed, #38b5ef);
+  color: white;
   border-radius: var(--radius);
   padding: 2.5rem;
   text-align: center;
@@ -122,7 +122,7 @@
 
 .analytics-card {
   position: relative;
-  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  background: linear-gradient(180deg, rgb(243, 243, 168), #f9fafb);
   border-radius: var(--radius-lg);
   padding: 1.8rem;
   border: 1px solid rgba(0, 0, 0, 0.04);
@@ -220,6 +220,7 @@
 
 .card-header {
   display: flex;
+  background: linear-gradient(135deg, #d9f3ed, #f5faf9);
   justify-content: space-between;
   align-items: start;
   margin-bottom: 1.2rem;

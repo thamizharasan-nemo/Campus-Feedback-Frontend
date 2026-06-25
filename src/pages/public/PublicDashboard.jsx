@@ -41,7 +41,7 @@ function PublicDashboard() {
     },
     {
       instructorId: 3,
-      instructorName: "Prof. Sakthi",
+      instructorName: "Prof. Sam",
       instructorRating: 4.3,
     },
   ];
@@ -73,7 +73,7 @@ function PublicDashboard() {
 
           <div className="mt-4 d-flex flex-column flex-sm-row justify-content-center gap-3">
             <Link to="/institution" className="btn btn-warning btn-lg mx-2">
-              Institution Access
+              Access Your Institution
             </Link>
             <a href="#analytics" className="btn btn-outline-light btn-lg mx-2">
               View Analytics
@@ -239,7 +239,7 @@ const FeatureCard = ({ title, text }) => (
 
 const MetricCard = ({ title, value, subtitle, icon }) => (
   <div className="col-12 col-md-6">
-    <div className="metric-card">
+    <div className="metric-card-public">
       <div className="metric-icon">{icon}</div>
       <h6>{title}</h6>
       <div className="metric-value">{value}</div>
